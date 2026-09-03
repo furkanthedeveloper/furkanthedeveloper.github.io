@@ -148,7 +148,6 @@
             list-style: none;
         }
 
-        /* Standard Container */
         .container {
             max-width: 1380px;
             margin: 0 auto;
@@ -626,12 +625,24 @@
         }
 
         /* ==========================================================================
-           6. COMMERCIAL STEAM TITLES (UNBOXED SEAMLESS STACKED CINEMA SHOWCASE)
+           6. COMMERCIAL STEAM TITLES (UNBOXED SIDE-BY-SIDE AIRY SHOWCASE)
            ========================================================================== */
         .steam-game-item {
-            margin-bottom: 110px;
-            padding-bottom: 70px;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 48px;
+            align-items: flex-start;
+            margin-bottom: 90px;
+            padding-bottom: 60px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .steam-game-item.reverse {
+            grid-template-columns: 1fr 1.3fr;
+        }
+
+        .steam-game-item.reverse .game-media {
+            order: 2;
         }
 
         .steam-game-item:last-child {
@@ -640,38 +651,64 @@
             border-bottom: none;
         }
 
-        .game-header {
-            margin-bottom: 24px;
+        .game-media {
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #000000;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: var(--transition-smooth);
+        }
+
+        .video-container:hover {
+            border-color: var(--accent-green-bright);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(16, 185, 129, 0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .game-info {
+            display: flex;
+            flex-direction: column;
         }
 
         .game-title-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
             margin-bottom: 14px;
         }
 
         .game-title-row h3 {
             font-family: var(--font-heading);
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: -0.5px;
-        }
-
-        .game-summary {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 950px;
+            line-height: 1.1;
         }
 
         .tags-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .tag-chip {
@@ -685,78 +722,43 @@
             font-weight: 600;
         }
 
-        /* Massive Theater 16:9 Cinema Frame - 100% Width */
-        .cinema-video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            background: #000000;
-            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            margin-bottom: 32px;
-            transition: var(--transition-smooth);
+        .game-summary {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 26px;
         }
 
-        .cinema-video-wrapper:hover {
-            border-color: var(--accent-green-bright);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(16, 185, 129, 0.22);
-        }
-
-        .cinema-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* 2-Column Achievements Grid Beneath Video */
-        .game-details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .achievement-card {
+        .achievements-box {
             background: rgba(14, 20, 34, 0.6);
-            border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: 24px 28px;
+            padding: 24px 26px;
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+        }
+
+        .achievement-item {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            backdrop-filter: blur(16px);
-            transition: var(--transition-smooth);
-        }
-
-        .achievement-card:hover {
-            border-color: var(--border-glow);
-            background: rgba(22, 32, 54, 0.8);
-            transform: translateY(-4px);
-        }
-
-        .achievement-card i {
-            font-size: 1.5rem;
-            color: var(--accent-green-bright);
-            margin-top: 2px;
-        }
-
-        .achievement-card strong {
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            color: #ffffff;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .achievement-card p {
-            font-size: 0.98rem;
+            gap: 14px;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.6;
+        }
+
+        .achievement-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .achievement-item i {
+            color: var(--accent-green-bright);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .achievement-item strong {
+            color: #ffffff;
         }
 
         /* ==========================================================================
@@ -1024,11 +1026,16 @@
         /* ==========================================================================
            10. RESPONSIVE BREAKPOINTS
            ========================================================================== */
-        @media (max-width: 1024px) {
+        @media (max-width: 1100px) {
             .container { padding: 0 24px; }
             .hero-title { font-size: 3rem; }
-            .game-details-grid { grid-template-columns: 1fr; }
-            .game-title-row h3 { font-size: 2.2rem; }
+            .steam-game-item, .steam-game-item.reverse {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .steam-game-item.reverse .game-media {
+                order: 0;
+            }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
@@ -1198,16 +1205,21 @@
             <button class="filter-btn" data-filter="jam">Academic & Jams</button>
         </div>
 
-        <!-- SECTION 1: COMMERCIAL STEAM TITLES (UNBOXED FULL-WIDTH CINEMA SHOWCASE) -->
+        <!-- SECTION 1: COMMERCIAL STEAM TITLES (UNBOXED SIDE-BY-SIDE SLEEK LAYOUT) -->
         <section id="steam-games" class="project-category" data-category="steam">
             <div class="section-header reveal">
                 <span class="section-tag">// Flagship Steam Releases</span>
                 <h2 class="section-title">Commercial Steam Titles</h2>
             </div>
 
-            <!-- Project 1: Frick It -->
+            <!-- Project 1: Frick It (Video Left, Info Right) -->
             <div class="steam-game-item reveal" id="project-frick-it">
-                <div class="game-header">
+                <div class="game-media">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="game-info">
                     <div class="game-title-row">
                         <h3>Frick It</h3>
                         <div class="tags-list">
@@ -1221,35 +1233,27 @@
                     <p class="game-summary">
                         A multiplayer survival game architected and developed entirely solo over 1.5 years. Handled everything from core game loop design to 3D environment modeling and publishing.
                     </p>
-                </div>
-
-                <!-- Giant Full-Width 16:9 Cinema Video Player -->
-                <div class="cinema-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
-                </div>
-
-                <!-- Key Achievements & Learnings Grid -->
-                <div class="game-details-grid">
-                    <div class="achievement-card">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <div>
-                            <strong>Key Achievement</strong>
-                            <p>Successfully implemented a seamless Steam P2P co-op network infrastructure from scratch.</p>
+                    <div class="achievements-box">
+                        <div class="achievement-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Key Achievement:</strong> Successfully implemented a seamless Steam P2P co-op network infrastructure from scratch.</div>
                         </div>
-                    </div>
-                    <div class="achievement-card">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <div>
-                            <strong>What I Learned</strong>
-                            <p>Mastered client-server synchronization and managing complex state machines for survival mechanics.</p>
+                        <div class="achievement-item">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <div><strong>What I Learned:</strong> Mastered client-server synchronization and managing complex state machines for survival mechanics.</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 2: Medusus! -->
-            <div class="steam-game-item reveal" id="project-medusus">
-                <div class="game-header">
+            <!-- Project 2: Medusus! (Info Left, Video Right - Reverse Zig-Zag Layout) -->
+            <div class="steam-game-item reverse reveal" id="project-medusus">
+                <div class="game-media">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="game-info">
                     <div class="game-title-row">
                         <h3>Medusus!</h3>
                         <div class="tags-list">
@@ -1262,27 +1266,14 @@
                     <p class="game-summary">
                         An asymmetrical hide-and-seek (prop-hunt) game featuring complex transformation mechanics. Earned official selection for the prestigious Steam Next Fest showcase.
                     </p>
-                </div>
-
-                <!-- Giant Full-Width 16:9 Cinema Video Player -->
-                <div class="cinema-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
-                </div>
-
-                <!-- Key Achievements & Learnings Grid -->
-                <div class="game-details-grid">
-                    <div class="achievement-card">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <div>
-                            <strong>Key Achievement</strong>
-                            <p>Developed a fully playable, networked demo from scratch in just 3 intensive weeks.</p>
+                    <div class="achievements-box">
+                        <div class="achievement-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Key Achievement:</strong> Developed a fully playable, networked demo from scratch in just 3 intensive weeks.</div>
                         </div>
-                    </div>
-                    <div class="achievement-card">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <div>
-                            <strong>What I Learned</strong>
-                            <p>Rapid prototyping under tight deadlines, optimizing Unity Mirror for real-time player physics.</p>
+                        <div class="achievement-item">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <div><strong>What I Learned:</strong> Rapid prototyping under tight deadlines, optimizing Unity Mirror for real-time player physics.</div>
                         </div>
                     </div>
                 </div>
