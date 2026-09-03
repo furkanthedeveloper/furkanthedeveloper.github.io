@@ -32,7 +32,7 @@
            ========================================================================== */
         :root {
             --bg-dark: #06080d;
-            --bg-card: rgba(13, 19, 32, 0.7);
+            --bg-card: rgba(13, 19, 32, 0.65);
             --bg-card-hover: rgba(20, 29, 48, 0.88);
             --bg-nav: rgba(6, 8, 13, 0.85);
             
@@ -55,7 +55,7 @@
 
             --radius-sm: 10px;
             --radius-md: 16px;
-            --radius-lg: 28px;
+            --radius-lg: 24px;
             --radius-full: 9999px;
 
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -150,16 +150,9 @@
 
         /* Standard Container */
         .container {
-            max-width: 1440px;
+            max-width: 1380px;
             margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* Full-Bleed Ultra-Wide Container for Immersive Theater Showcase */
-        .full-bleed-container {
-            width: 95%;
-            max-width: 1720px;
-            margin: 0 auto;
+            padding: 0 32px;
         }
 
         section {
@@ -633,129 +626,52 @@
         }
 
         /* ==========================================================================
-           6. COMMERCIAL STEAM TITLES SECTION (FULL-BLEED ULTRA-WIDE SHOWCASE)
+           6. COMMERCIAL STEAM TITLES (UNBOXED SEAMLESS STACKED CINEMA SHOWCASE)
            ========================================================================== */
-        .pc-project-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(16, 185, 129, 0.18);
-            border-radius: var(--radius-lg);
-            padding: 50px 56px;
-            margin-bottom: 80px;
-            backdrop-filter: blur(24px);
-            transition: var(--transition-smooth);
-            display: grid;
-            grid-template-columns: 1.55fr 1fr;
-            gap: 56px;
-            align-items: flex-start;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
+        .steam-game-item {
+            margin-bottom: 110px;
+            padding-bottom: 70px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .pc-project-card:hover {
-            border-color: var(--border-glow);
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85);
-            background: var(--bg-card-hover);
+        .steam-game-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
-        .pc-project-card.reverse {
-            grid-template-columns: 1fr 1.55fr;
+        .game-header {
+            margin-bottom: 24px;
         }
 
-        .pc-project-card.reverse .project-media {
-            order: 2;
-        }
-
-        .project-media {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 100%;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background: #000000;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .video-container iframe, .video-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            object-fit: cover;
-        }
-
-        /* Screenshot & Media Gallery Track */
-        .media-gallery-bar {
+        .game-title-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            background: rgba(6, 8, 13, 0.75);
-            padding: 12px 18px;
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 20px;
             flex-wrap: wrap;
+            margin-bottom: 14px;
         }
 
-        .gallery-badge {
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            color: var(--accent-green-bright);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .gallery-thumbnails {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .thumb-slot {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-light);
-            color: var(--text-secondary);
-            padding: 6px 14px;
-            border-radius: var(--radius-full);
-            font-size: 0.8rem;
-            font-family: var(--font-mono);
-            cursor: pointer;
-            transition: var(--transition-fast);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .thumb-slot:hover, .thumb-slot.active {
-            border-color: var(--accent-green);
-            color: #ffffff;
-            background: var(--accent-glow);
-        }
-
-        .project-info h3 {
+        .game-title-row h3 {
             font-family: var(--font-heading);
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: #ffffff;
-            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .game-summary {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 950px;
         }
 
         .tags-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 22px;
         }
 
         .tag-chip {
@@ -769,42 +685,78 @@
             font-weight: 600;
         }
 
-        .project-desc {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 28px;
-            line-height: 1.8;
+        /* Massive Theater 16:9 Cinema Frame - 100% Width */
+        .cinema-video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: #000000;
+            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 35px rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            margin-bottom: 32px;
+            transition: var(--transition-smooth);
         }
 
-        .achievements-box {
-            background: rgba(5, 7, 12, 0.75);
+        .cinema-video-wrapper:hover {
+            border-color: var(--accent-green-bright);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(16, 185, 129, 0.22);
+        }
+
+        .cinema-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 2-Column Achievements Grid Beneath Video */
+        .game-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .achievement-card {
+            background: rgba(14, 20, 34, 0.6);
+            border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .achievement-item {
+            padding: 24px 28px;
             display: flex;
             align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 14px;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.65;
+            gap: 16px;
+            backdrop-filter: blur(16px);
+            transition: var(--transition-smooth);
         }
 
-        .achievement-item:last-child {
-            margin-bottom: 0;
+        .achievement-card:hover {
+            border-color: var(--border-glow);
+            background: rgba(22, 32, 54, 0.8);
+            transform: translateY(-4px);
         }
 
-        .achievement-item i {
+        .achievement-card i {
+            font-size: 1.5rem;
             color: var(--accent-green-bright);
-            font-size: 1.1rem;
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
-        .achievement-item strong {
+        .achievement-card strong {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
             color: #ffffff;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .achievement-card p {
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         /* ==========================================================================
@@ -1072,20 +1024,11 @@
         /* ==========================================================================
            10. RESPONSIVE BREAKPOINTS
            ========================================================================== */
-        @media (max-width: 1350px) {
-            .full-bleed-container { width: 100%; padding: 0 24px; }
-            .pc-project-card, .pc-project-card.reverse {
-                grid-template-columns: 1fr;
-                gap: 36px;
-                padding: 36px;
-            }
-            .pc-project-card.reverse .project-media {
-                order: 0;
-            }
-        }
-
         @media (max-width: 1024px) {
+            .container { padding: 0 24px; }
             .hero-title { font-size: 3rem; }
+            .game-details-grid { grid-template-columns: 1fr; }
+            .game-title-row h3 { font-size: 2.2rem; }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
@@ -1101,7 +1044,6 @@
             .hero-title { font-size: 2.2rem; }
             .hero-subtitle { font-size: 1.2rem; }
             .hero-avatar-frame { width: 130px; height: 130px; }
-            .pc-project-card { padding: 24px; gap: 24px; }
             .mobile-grid, .jam-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .contact-card { padding: 40px 20px; }
@@ -1245,113 +1187,6 @@
         </div>
     </section>
 
-    <!-- SECTION 1: COMMERCIAL STEAM TITLES (FULL-BLEED IMMERSIVE THEATER SHOWCASE) -->
-    <section id="steam-games" class="project-category" data-category="steam" style="padding-bottom: 40px;">
-        <div class="full-bleed-container">
-            <div class="section-header reveal">
-                <span class="section-tag">// Flagship Steam Releases</span>
-                <h2 class="section-title">Commercial Steam Titles</h2>
-            </div>
-
-            <!-- Project 1: Frick It -->
-            <div class="pc-project-card reveal" id="project-frick-it">
-                <div class="project-media">
-                    <div class="video-container" id="mediaDisplay-frick-it">
-                        <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    
-                    <!-- Media Gallery Bar -->
-                    <div class="media-gallery-bar">
-                        <div class="gallery-badge"><i class="fa-solid fa-photo-film"></i> Media Gallery</div>
-                        <div class="gallery-thumbnails">
-                            <div class="thumb-slot active" data-type="video" data-src="https://www.youtube.com/embed/6n2dgl4cLOA">
-                                <i class="fa-solid fa-play"></i> Trailer
-                            </div>
-                            <div class="thumb-slot" data-type="image" data-src="src/frickit_ss1.jpg" title="Add screenshot to src/frickit_ss1.jpg">
-                                <i class="fa-solid fa-image"></i> Screenshot 1
-                            </div>
-                            <div class="thumb-slot" data-type="image" data-src="src/frickit_ss2.jpg" title="Add screenshot to src/frickit_ss2.jpg">
-                                <i class="fa-solid fa-cube"></i> 3D Render
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-info">
-                    <h3>Frick It</h3>
-                    <div class="tags-list">
-                        <span class="tag-chip"><i class="fa-brands fa-unity"></i> Unity</span>
-                        <span class="tag-chip">C#</span>
-                        <span class="tag-chip"><i class="fa-brands fa-steam"></i> Steam P2P</span>
-                        <span class="tag-chip">3D Modeling</span>
-                        <span class="tag-chip">Solo Dev</span>
-                    </div>
-                    <p class="project-desc">
-                        A multiplayer survival game architected and developed entirely solo over 1.5 years. Handled everything from core game loop design to 3D environment modeling and publishing.
-                    </p>
-                    <div class="achievements-box">
-                        <div class="achievement-item">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <div><strong>Key Achievement:</strong> Successfully implemented a seamless Steam P2P co-op network infrastructure from scratch.</div>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fa-solid fa-lightbulb"></i>
-                            <div><strong>What I Learned:</strong> Mastered client-server synchronization and managing complex state machines for survival mechanics.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2: Medusus! -->
-            <div class="pc-project-card reverse reveal" id="project-medusus">
-                <div class="project-media">
-                    <div class="video-container" id="mediaDisplay-medusus">
-                        <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
-                    </div>
-
-                    <!-- Media Gallery Bar -->
-                    <div class="media-gallery-bar">
-                        <div class="gallery-badge"><i class="fa-solid fa-photo-film"></i> Media Gallery</div>
-                        <div class="gallery-thumbnails">
-                            <div class="thumb-slot active" data-type="video" data-src="https://www.youtube.com/embed/FsVtl8qrceY">
-                                <i class="fa-solid fa-play"></i> Trailer
-                            </div>
-                            <div class="thumb-slot" data-type="image" data-src="src/medusus_ss1.jpg" title="Add screenshot to src/medusus_ss1.jpg">
-                                <i class="fa-solid fa-image"></i> Screenshot 1
-                            </div>
-                            <div class="thumb-slot" data-type="image" data-src="src/medusus_ss2.jpg" title="Add screenshot to src/medusus_ss2.jpg">
-                                <i class="fa-solid fa-cube"></i> 3D Render
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-info">
-                    <h3>Medusus!</h3>
-                    <div class="tags-list">
-                        <span class="tag-chip"><i class="fa-brands fa-unity"></i> Unity Mirror</span>
-                        <span class="tag-chip">Multiplayer</span>
-                        <span class="tag-chip">Prop-hunt</span>
-                        <span class="tag-chip">Steam Next Fest</span>
-                    </div>
-                    <p class="project-desc">
-                        An asymmetrical hide-and-seek (prop-hunt) game featuring complex transformation mechanics. Earned official selection for the prestigious Steam Next Fest showcase.
-                    </p>
-                    <div class="achievements-box">
-                        <div class="achievement-item">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <div><strong>Key Achievement:</strong> Developed a fully playable, networked demo from scratch in just 3 intensive weeks.</div>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fa-solid fa-lightbulb"></i>
-                            <div><strong>What I Learned:</strong> Rapid prototyping under tight deadlines, optimizing Unity Mirror for real-time player physics.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- MAIN PORTFOLIO SECTIONS -->
     <main class="container">
         
@@ -1362,6 +1197,97 @@
             <button class="filter-btn" data-filter="mobile">Mobile Games</button>
             <button class="filter-btn" data-filter="jam">Academic & Jams</button>
         </div>
+
+        <!-- SECTION 1: COMMERCIAL STEAM TITLES (UNBOXED FULL-WIDTH CINEMA SHOWCASE) -->
+        <section id="steam-games" class="project-category" data-category="steam">
+            <div class="section-header reveal">
+                <span class="section-tag">// Flagship Steam Releases</span>
+                <h2 class="section-title">Commercial Steam Titles</h2>
+            </div>
+
+            <!-- Project 1: Frick It -->
+            <div class="steam-game-item reveal" id="project-frick-it">
+                <div class="game-header">
+                    <div class="game-title-row">
+                        <h3>Frick It</h3>
+                        <div class="tags-list">
+                            <span class="tag-chip"><i class="fa-brands fa-unity"></i> Unity</span>
+                            <span class="tag-chip">C#</span>
+                            <span class="tag-chip"><i class="fa-brands fa-steam"></i> Steam P2P</span>
+                            <span class="tag-chip">3D Modeling</span>
+                            <span class="tag-chip">Solo Dev</span>
+                        </div>
+                    </div>
+                    <p class="game-summary">
+                        A multiplayer survival game architected and developed entirely solo over 1.5 years. Handled everything from core game loop design to 3D environment modeling and publishing.
+                    </p>
+                </div>
+
+                <!-- Giant Full-Width 16:9 Cinema Video Player -->
+                <div class="cinema-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                </div>
+
+                <!-- Key Achievements & Learnings Grid -->
+                <div class="game-details-grid">
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Key Achievement</strong>
+                            <p>Successfully implemented a seamless Steam P2P co-op network infrastructure from scratch.</p>
+                        </div>
+                    </div>
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <div>
+                            <strong>What I Learned</strong>
+                            <p>Mastered client-server synchronization and managing complex state machines for survival mechanics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Medusus! -->
+            <div class="steam-game-item reveal" id="project-medusus">
+                <div class="game-header">
+                    <div class="game-title-row">
+                        <h3>Medusus!</h3>
+                        <div class="tags-list">
+                            <span class="tag-chip"><i class="fa-brands fa-unity"></i> Unity Mirror</span>
+                            <span class="tag-chip">Multiplayer</span>
+                            <span class="tag-chip">Prop-hunt</span>
+                            <span class="tag-chip">Steam Next Fest</span>
+                        </div>
+                    </div>
+                    <p class="game-summary">
+                        An asymmetrical hide-and-seek (prop-hunt) game featuring complex transformation mechanics. Earned official selection for the prestigious Steam Next Fest showcase.
+                    </p>
+                </div>
+
+                <!-- Giant Full-Width 16:9 Cinema Video Player -->
+                <div class="cinema-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                </div>
+
+                <!-- Key Achievements & Learnings Grid -->
+                <div class="game-details-grid">
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong>Key Achievement</strong>
+                            <p>Developed a fully playable, networked demo from scratch in just 3 intensive weeks.</p>
+                        </div>
+                    </div>
+                    <div class="achievement-card">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <div>
+                            <strong>What I Learned</strong>
+                            <p>Rapid prototyping under tight deadlines, optimizing Unity Mirror for real-time player physics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- SECTION 2: MOBILE GAMES -->
         <section id="mobile-games" class="project-category" data-category="mobile">
@@ -1601,28 +1527,7 @@
                 animateCanvas();
             }
 
-            // 3. Media Gallery Switcher Logic (Video vs Image Screenshots)
-            document.querySelectorAll('.thumb-slot').forEach(thumb => {
-                thumb.addEventListener('click', function() {
-                    const projectCard = this.closest('.pc-project-card');
-                    const mediaDisplay = projectCard.querySelector('.video-container');
-                    const siblings = this.parentElement.querySelectorAll('.thumb-slot');
-                    
-                    siblings.forEach(s => s.classList.remove('active'));
-                    this.classList.add('active');
-
-                    const type = this.getAttribute('data-type');
-                    const src = this.getAttribute('data-src');
-
-                    if (type === 'video') {
-                        mediaDisplay.innerHTML = `<iframe src="${src}" allowfullscreen loading="lazy"></iframe>`;
-                    } else if (type === 'image') {
-                        mediaDisplay.innerHTML = `<img src="${src}" alt="Game Screenshot" onerror="this.onerror=null; this.src='src/profile.jpeg'; alert('Image file not found at: ' + '${src}' + '. Add your screenshot to the src/ folder!');">`;
-                    }
-                });
-            });
-
-            // 4. Sticky Navbar & Back-to-Top Listener
+            // 3. Sticky Navbar & Back-to-Top Listener
             const navbar = document.getElementById('navbar');
             const backToTop = document.getElementById('backToTop');
 
@@ -1648,7 +1553,7 @@
                 }
             });
 
-            // 5. Mobile Menu Toggle
+            // 4. Mobile Menu Toggle
             const mobileMenu = document.getElementById('mobileMenu');
             const menuOpen = document.getElementById('menuOpen');
             const menuClose = document.getElementById('menuClose');
@@ -1660,7 +1565,7 @@
                 link.addEventListener('click', () => mobileMenu.classList.remove('open'));
             });
 
-            // 6. Scroll Reveal Animation (Intersection Observer)
+            // 5. Scroll Reveal Animation (Intersection Observer)
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1672,7 +1577,7 @@
 
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // 7. Email Copy to Clipboard Logic
+            // 6. Email Copy to Clipboard Logic
             const copyBtn = document.getElementById('copyBtn');
             const emailText = document.getElementById('emailText').innerText;
             const toast = document.getElementById('toast');
@@ -1690,7 +1595,7 @@
                 });
             });
 
-            // 8. Project Category Filter
+            // 7. Project Category Filter
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCategories = document.querySelectorAll('.project-category');
 
