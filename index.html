@@ -5,112 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furkan Süleyman Bozkurt | Indie Game Developer</title>
     <style>
+        /* YENİ RENK PALETİ: Zümrüt Yeşili ve Soft Karanlık */
+        :root {
+            --bg-main: #1e2124; /* Zifiri siyah değil, yumuşak antrasit */
+            --bg-card: #282b30; /* Kart arka planları */
+            --bg-hover: #36393e;
+            --green-light: #4ade80; /* Açık parlak yeşil */
+            --green-main: #10b981; /* Ana zümrüt yeşili */
+            --green-dark: #059669; /* Koyu yeşil hover için */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
         /* Genel Ayarlar & CSS Sıfırlama */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
         
-        /* Smooth Kaydırma */
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; } /* Doğal ve pürüzsüz kaydırma */
         
-        /* Arka Plan: Daha derin, daha geniş glow efekti */
         body { 
-            background-color: #080808; 
-            background-image: radial-gradient(circle at 100% 100%, rgba(65, 20, 85, 0.25) 0%, rgba(8, 8, 8, 1) 60%);
-            background-attachment: fixed;
-            color: #e0e0e0; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
             line-height: 1.7; 
             overflow-x: hidden;
         }
         
-        a { color: #4da6ff; text-decoration: none; transition: 0.3s; }
-        a:hover { color: #80c1ff; }
+        a { color: var(--green-main); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--green-light); }
         
-        /* Layout: Daha Geniş (1400px) */
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        section { padding: 100px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+        /* Layout: Tam ayarında genişlik (1200px) */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+        section { padding: 90px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         section:last-child { border-bottom: none; }
         
-        /* Hero Section (Ekrana Tam Oturan Giriş) */
+        /* Hero Section */
         header { 
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center; 
-            background: radial-gradient(circle at 50% 0%, rgba(30, 40, 60, 0.5) 0%, rgba(8,8,8,0) 70%);
             padding: 40px 20px;
         }
-        header h1 { font-size: 3.5rem; color: #ffffff; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 800; }
-        header h2 { font-size: 1.4rem; color: #4da6ff; font-weight: 400; margin-bottom: 30px; letter-spacing: 1px; }
-        header p { color: #bbbbbb; font-size: 1.1rem; max-width: 700px; margin: 0 auto 40px auto; }
+        header h1 { font-size: 3.2rem; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-weight: 800; }
+        header h2 { font-size: 1.3rem; color: var(--green-main); font-weight: 500; margin-bottom: 25px; letter-spacing: 1px; }
+        header p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0 auto 35px auto; }
         
-        .btn { display: inline-block; background-color: #4da6ff; color: #0a0a0a; padding: 14px 32px; font-size: 1rem; font-weight: bold; border-radius: 6px; text-transform: uppercase; margin: 10px; transition: all 0.3s ease; letter-spacing: 1px; }
-        .btn:hover { background-color: #80c1ff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(77, 166, 255, 0.2); }
-        .btn-outline { background: transparent; border: 2px solid #4da6ff; color: #4da6ff; }
-        .btn-outline:hover { background: #4da6ff; color: #0a0a0a; }
+        .btn { display: inline-block; background-color: var(--green-main); color: #ffffff; padding: 12px 28px; font-size: 1rem; font-weight: 600; border-radius: 6px; text-transform: uppercase; margin: 8px; transition: all 0.2s ease; letter-spacing: 1px; border: 2px solid var(--green-main); }
+        .btn:hover { background-color: var(--green-dark); border-color: var(--green-dark); transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--green-main); }
+        .btn-outline:hover { background: var(--green-main); color: #ffffff; }
 
-        /* Başlıklar */
-        h3.section-title { font-size: 2.2rem; color: #ffffff; margin-bottom: 70px; text-transform: uppercase; text-align: center; letter-spacing: 2px; }
+        h3.section-title { font-size: 2rem; color: #ffffff; margin-bottom: 60px; text-transform: uppercase; text-align: center; letter-spacing: 1px; }
 
-        /* PC Oyunları - Zikzak Layout (Daha Geniş Boşluklar) */
-        .project-row { display: flex; flex-wrap: wrap; gap: 60px; margin-bottom: 120px; align-items: center; }
-        .project-row:last-child { margin-bottom: 0; }
+        /* VİDEO KUTULARI (Asla Bozulmayan Aspect Ratio) */
+        .video-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); background: #000; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
-        .project-video { flex: 1.2; min-width: 400px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); border-radius: 12px; overflow: hidden; background: #000; }
-        .project-video iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+        .mobile-video-wrapper { position: relative; padding-bottom: 177.77%; /* 9:16 Shorts */ height: 0; overflow: hidden; border-radius: 10px; margin-bottom: 20px; background: #000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .mobile-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* PC OYUNLARI - KUSURSUZ ZİKZAK (CSS GRID) */
+        .pc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 100px; }
+        .pc-grid:last-child { margin-bottom: 0; }
+        .pc-info h4 { font-size: 2rem; color: var(--green-light); margin-bottom: 15px; font-weight: 700; }
+        .pc-info p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; }
         
-        .project-info { flex: 1; min-width: 400px; }
-        .project-info h4 { font-size: 2.2rem; color: #4da6ff; margin-bottom: 15px; font-weight: 700; }
-        .project-info p { color: #cccccc; margin-bottom: 25px; font-size: 1.1rem; }
+        /* Zikzak için Medusus'un yazısını sola alma */
+        .reverse-layout .pc-info { order: -1; }
+
+        /* Etiketler */
+        .tags { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { display: inline-block; background-color: rgba(16, 185, 129, 0.1); padding: 5px 12px; font-size: 0.85rem; border-radius: 4px; color: var(--green-light); border: 1px solid rgba(16, 185, 129, 0.2); }
         
-        .tags { margin-bottom: 25px; display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { display: inline-block; background-color: rgba(255,255,255,0.05); padding: 6px 14px; font-size: 0.85rem; border-radius: 6px; color: #aaaaaa; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
-        
-        .achievements { margin-top: 20px; padding-left: 20px; color: #bbbbbb; font-size: 1rem; }
-        .achievements li { margin-bottom: 12px; }
+        .achievements { margin-top: 20px; padding-left: 20px; color: var(--text-muted); font-size: 0.95rem; }
+        .achievements li { margin-bottom: 10px; }
         .achievements strong { color: #ffffff; }
 
-        /* Mobil Oyunlar - Glassmorphism Kartlar */
-        .mobile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .mobile-card { 
-            background: rgba(255,255,255,0.02); 
-            padding: 30px; 
-            border-radius: 16px; 
-            border: 1px solid rgba(255,255,255,0.05); 
-            transition: transform 0.4s ease, border-color 0.4s ease; 
-            backdrop-filter: blur(10px);
-        }
-        .mobile-card:hover { border-color: rgba(77, 166, 255, 0.4); transform: translateY(-10px); }
-        .mobile-card iframe { width: 100%; aspect-ratio: 9/16; border-radius: 12px; border: none; margin-bottom: 20px; display: block; box-shadow: 0 10px 25px rgba(0,0,0,0.5); background: #000; }
-        .mobile-card h4 { color: #4da6ff; margin-bottom: 15px; font-size: 1.5rem; }
-
-        /* Jam Projeleri */
-        .jam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .jam-card { background: rgba(255,255,255,0.02); padding: 35px; border-radius: 12px; border-left: 5px solid #4da6ff; transition: all 0.3s ease; }
-        .jam-card:hover { background: rgba(255,255,255,0.04); transform: translateX(10px); }
-        .jam-card h4 { color: #ffffff; margin-bottom: 12px; font-size: 1.4rem; }
-        .jam-card p { font-size: 1rem; color: #cccccc; }
-
-        /* Scroll Reveal (Aşağı kaydırdıkça belirme efekti) */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* MOBİL OYUNLAR & JAM KARTLARI */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--bg-card); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); transition: transform 0.2s ease, background 0.2s ease; }
+        .card:hover { transform: translateY(-5px); background: var(--bg-hover); border-color: rgba(16, 185, 129, 0.3); }
+        .card h4 { color: var(--green-main); margin-bottom: 10px; font-size: 1.4rem; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
 
         /* Footer */
-        footer { text-align: center; padding: 50px 20px; background-color: #030303; color: #555555; font-size: 0.9rem; }
+        footer { text-align: center; padding: 40px 20px; background-color: #151719; color: #666; font-size: 0.9rem; }
 
-        /* Responsive: Mobilde Zikzakları Düzeltme */
+        /* Responsive Ayarlar (Telefonda düzene girmesi için) */
         @media (max-width: 900px) {
-            .container { padding: 0 25px; }
-            header h1 { font-size: 2.5rem; }
-            .project-row { flex-direction: column !important; gap: 30px; }
-            .project-video, .project-info { min-width: 100%; order: 0 !important; }
+            .pc-grid { grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px; }
+            .reverse-layout .pc-info { order: 0; } /* Telefonda zikzak iptal olur, hepsi alt alta düzgünce dizilir */
         }
     </style>
 </head>
 <body>
 
     <!-- HERO SECTION -->
-    <header class="reveal active">
+    <header>
         <div class="container">
             <h1>Furkan Süleyman Bozkurt</h1>
             <h2>Indie Game Developer & 3D Artist</h2>
@@ -118,23 +110,23 @@
                 Driven 3rd-year Digital Game Design student specializing in end-to-end solo development, multiplayer networking (Steam P2P, Unity Mirror), and 3D modeling. 
             </p>
             <div>
-                <a href="CV_Furkan_Bozkurt.pdf" class="btn" target="_blank">Download Resume (PDF)</a>
+                <a href="CV_Furkan_Bozkurt.pdf" class="btn" target="_blank">Download Resume</a>
                 <a href="https://linkedin.com/in/furkansuleymanbozkurt" class="btn btn-outline" target="_blank">LinkedIn</a>
             </div>
         </div>
     </header>
 
-    <!-- SECTION 1: FEATURED PC GAMES (Zikzak Düzen) -->
+    <!-- SECTION 1: COMMERCIAL PC TITLES (Kusursuz Grid Zikzak) -->
     <section id="pc-games">
         <div class="container">
-            <h3 class="section-title reveal">Commercial PC Titles</h3>
+            <h3 class="section-title">Commercial PC Titles</h3>
             
             <!-- Frick It (Video Solda, Yazı Sağda) -->
-            <div class="project-row reveal">
-                <div class="project-video" style="order: 1;">
-                    <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="pc-grid">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" allowfullscreen></iframe>
                 </div>
-                <div class="project-info" style="order: 2;">
+                <div class="pc-info">
                     <h4>Frick It</h4>
                     <div class="tags">
                         <span class="tag">Unity</span> <span class="tag">C#</span> <span class="tag">Steam P2P</span> <span class="tag">3D Modeling</span>
@@ -147,9 +139,12 @@
                 </div>
             </div>
 
-            <!-- Medusus (Yazı Solda, Video Sağda) -->
-            <div class="project-row reveal">
-                <div class="project-info" style="order: 1;">
+            <!-- Medusus (Yazı Solda, Video Sağda - "reverse-layout" class'ı ile) -->
+            <div class="pc-grid reverse-layout">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" allowfullscreen></iframe>
+                </div>
+                <div class="pc-info">
                     <h4>Medusus!</h4>
                     <div class="tags">
                         <span class="tag">Unity Mirror</span> <span class="tag">Multiplayer</span> <span class="tag">Prop-hunt</span>
@@ -160,9 +155,6 @@
                         <li><strong>What I Learned:</strong> Rapid prototyping under tight deadlines, optimizing Unity Mirror for real-time player physics.</li>
                     </ul>
                 </div>
-                <div class="project-video" style="order: 2;">
-                    <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
             </div>
         </div>
     </section>
@@ -170,25 +162,31 @@
     <!-- SECTION 2: MOBILE GAMES -->
     <section id="mobile-games">
         <div class="container">
-            <h3 class="section-title reveal">Mobile Portfolio (Google Play)</h3>
-            <div class="mobile-grid">
+            <h3 class="section-title">Mobile Portfolio (Google Play)</h3>
+            <div class="card-grid">
                 
-                <div class="mobile-card reveal">
-                    <iframe src="https://www.youtube.com/embed/TR3kjxQ7eKs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card">
+                    <div class="mobile-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/TR3kjxQ7eKs" allowfullscreen></iframe>
+                    </div>
                     <h4>Stick Of Duty: Zombies</h4>
                     <div class="tags"><span class="tag">2D Ragdoll</span> <span class="tag">Linux Server</span></div>
                     <p>A fast-paced 2D ragdoll action game featuring real-time multiplayer.</p>
                 </div>
 
-                <div class="mobile-card reveal">
-                    <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card">
+                    <div class="mobile-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs" allowfullscreen></iframe>
+                    </div>
                     <h4>Right Ball</h4>
                     <div class="tags"><span class="tag">Hypercasual</span> <span class="tag">IAP & Ads</span></div>
                     <p>An addictive hypercasual title focused on retention and smooth core mechanics.</p>
                 </div>
 
-                <div class="mobile-card reveal">
-                    <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card">
+                    <div class="mobile-video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0" allowfullscreen></iframe>
+                    </div>
                     <h4>MyTeammates</h4>
                     <div class="tags"><span class="tag">Hypercasual</span> <span class="tag">Leaderboards</span></div>
                     <p>A reflex-based mobile game with competitive elements.</p>
@@ -201,22 +199,22 @@
     <!-- SECTION 3: ACADEMIC & GAME JAMS -->
     <section id="academic-jams">
         <div class="container">
-            <h3 class="section-title reveal">Academic Projects & Game Jams</h3>
-            <div class="jam-grid">
+            <h3 class="section-title">Academic Projects & Game Jams</h3>
+            <div class="card-grid">
                 
-                <div class="jam-card reveal">
+                <div class="card" style="border-left: 4px solid var(--green-main);">
                     <h4>Albino And Curse</h4>
                     <div class="tags"><span class="tag">Academic Project</span> <span class="tag">Turn-Based RPG</span></div>
                     <p>Designed and developed from scratch for a university module within a few weeks. Handled both programming of the Undertale-style turn-based combat and custom 2D pixel art creation.</p>
                 </div>
 
-                <div class="jam-card reveal">
+                <div class="card" style="border-left: 4px solid var(--green-main);">
                     <h4>The Amber Path</h4>
                     <div class="tags"><span class="tag">Game Jam</span> <span class="tag">Team Project</span></div>
                     <p>Developed within a strict 48-72 hour deadline in a team environment. Focused on agile task delegation and polishing the core aesthetic under intense time pressure.</p>
                 </div>
 
-                <div class="jam-card reveal">
+                <div class="card" style="border-left: 4px solid var(--green-main);">
                     <h4>The Mindbreak</h4>
                     <div class="tags"><span class="tag">Game Jam</span> <span class="tag">Team Project</span></div>
                     <p>A prototype created during a high-stakes Game Jam. Showcases the ability to brainstorm, scope down features realistically, and deliver a playable core loop collaboratively.</p>
@@ -234,27 +232,5 @@
         </div>
     </footer>
 
-    <!-- SCROLL REVEAL SCRIPT -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let options = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.15
-            };
-
-            let observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, options);
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
 </body>
 </html>
