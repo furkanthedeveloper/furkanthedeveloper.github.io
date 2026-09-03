@@ -148,10 +148,11 @@
             list-style: none;
         }
 
+        /* Ultra-Wide Spacious Container */
         .container {
-            max-width: 1280px;
+            max-width: 1440px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 40px;
         }
 
         section {
@@ -171,7 +172,7 @@
             padding: 22px 0;
             transition: var(--transition-smooth);
             background: transparent;
-            border-bottom: 1px solid transparent; /* Prevents layout jump & white flash */
+            border-bottom: 1px solid transparent;
             will-change: padding, background-color, border-color, box-shadow;
         }
 
@@ -180,7 +181,7 @@
             background: var(--bg-nav);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(16, 185, 129, 0.12); /* Soft emerald glass glow */
+            border-bottom: 1px solid rgba(16, 185, 129, 0.12);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
@@ -406,7 +407,6 @@
             overflow: hidden;
         }
 
-        /* Dynamic Particle Canvas Backdrop */
         #heroCanvas {
             position: absolute;
             top: 0;
@@ -429,7 +429,6 @@
             z-index: 1;
         }
 
-        /* Profile Avatar Frame - enlarged & sleek */
         .hero-avatar-wrapper {
             position: relative;
             margin-bottom: 28px;
@@ -459,7 +458,6 @@
             display: block;
         }
 
-        /* Clean Headline: FURKAN SÜLEYMAN BOZKURT */
         .hero-title {
             font-family: var(--font-heading);
             font-size: 3.8rem;
@@ -485,7 +483,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Tech Pills replacing long paragraph */
         .hero-tech-pills {
             display: flex;
             align-items: center;
@@ -522,13 +519,12 @@
             margin-bottom: 60px;
         }
 
-        /* Airy & Spacious Stat Cards Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 28px;
             width: 100%;
-            max-width: 1080px;
+            max-width: 1150px;
             margin-top: 10px;
         }
 
@@ -600,14 +596,13 @@
             letter-spacing: -0.5px;
         }
 
-        /* Filter Controls */
         .filter-container {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 50px;
+            margin-bottom: 55px;
         }
 
         .filter-btn {
@@ -631,33 +626,40 @@
         }
 
         /* ==========================================================================
-           6. COMMERCIAL STEAM TITLES SECTION (AIRY & WIDE PROJECT SHOWCASE)
+           6. COMMERCIAL STEAM TITLES SECTION (ULTRA-WIDE & CINEMATIC GALLERY SHOWCASE)
            ========================================================================== */
         .pc-project-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
-            padding: 44px 48px;
-            margin-bottom: 70px;
+            padding: 48px 54px;
+            margin-bottom: 80px;
             backdrop-filter: blur(20px);
             transition: var(--transition-smooth);
             display: grid;
-            grid-template-columns: 1.25fr 1fr;
-            gap: 48px;
-            align-items: center;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 54px;
+            align-items: flex-start;
         }
 
         .pc-project-card:hover {
             border-color: var(--border-glow);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
         }
 
         .pc-project-card.reverse {
-            grid-template-columns: 1fr 1.25fr;
+            grid-template-columns: 1fr 1.35fr;
         }
 
         .pc-project-card.reverse .project-media {
             order: 2;
+        }
+
+        .project-media {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
         }
 
         .video-container {
@@ -668,22 +670,73 @@
             border-radius: var(--radius-md);
             overflow: hidden;
             background: #000000;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .video-container iframe {
+        .video-container iframe, .video-container img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
+            object-fit: cover;
+        }
+
+        /* Screenshot & Media Gallery Track */
+        .media-gallery-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: rgba(6, 8, 13, 0.75);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .gallery-badge {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-green-bright);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .thumb-slot {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .thumb-slot:hover, .thumb-slot.active {
+            border-color: var(--accent-green);
+            color: #ffffff;
+            background: var(--accent-glow);
         }
 
         .project-info h3 {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 14px;
@@ -715,7 +768,7 @@
         }
 
         .achievements-box {
-            background: rgba(5, 7, 12, 0.7);
+            background: rgba(5, 7, 12, 0.75);
             border-radius: var(--radius-md);
             padding: 24px;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -1010,7 +1063,7 @@
         /* ==========================================================================
            10. RESPONSIVE BREAKPOINTS
            ========================================================================== */
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
             .container { padding: 0 24px; }
             .hero-title { font-size: 3rem; }
             .pc-project-card, .pc-project-card.reverse {
@@ -1191,7 +1244,7 @@
             <button class="filter-btn" data-filter="jam">Academic & Jams</button>
         </div>
 
-        <!-- SECTION 1: COMMERCIAL STEAM TITLES (WIDER & AIRIER) -->
+        <!-- SECTION 1: COMMERCIAL STEAM TITLES (ULTRA-WIDE & GALLERY READY) -->
         <section id="steam-games" class="project-category" data-category="steam">
             <div class="section-header reveal">
                 <span class="section-tag">// Flagship Steam Releases</span>
@@ -1201,10 +1254,27 @@
             <!-- Project 1: Frick It -->
             <div class="pc-project-card reveal" id="project-frick-it">
                 <div class="project-media">
-                    <div class="video-container">
+                    <div class="video-container" id="mediaDisplay-frick-it">
                         <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
                     </div>
+                    
+                    <!-- Media Gallery Bar -->
+                    <div class="media-gallery-bar">
+                        <div class="gallery-badge"><i class="fa-solid fa-photo-film"></i> Media Gallery</div>
+                        <div class="gallery-thumbnails">
+                            <div class="thumb-slot active" data-type="video" data-src="https://www.youtube.com/embed/6n2dgl4cLOA">
+                                <i class="fa-solid fa-play"></i> Trailer
+                            </div>
+                            <div class="thumb-slot" data-type="image" data-src="src/frickit_ss1.jpg" title="Add screenshot to src/frickit_ss1.jpg">
+                                <i class="fa-solid fa-image"></i> Screenshot 1
+                            </div>
+                            <div class="thumb-slot" data-type="image" data-src="src/frickit_ss2.jpg" title="Add screenshot to src/frickit_ss2.jpg">
+                                <i class="fa-solid fa-cube"></i> 3D Render
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="project-info">
                     <h3>Frick It</h3>
                     <div class="tags-list">
@@ -1233,10 +1303,27 @@
             <!-- Project 2: Medusus! -->
             <div class="pc-project-card reverse reveal" id="project-medusus">
                 <div class="project-media">
-                    <div class="video-container">
+                    <div class="video-container" id="mediaDisplay-medusus">
                         <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
                     </div>
+
+                    <!-- Media Gallery Bar -->
+                    <div class="media-gallery-bar">
+                        <div class="gallery-badge"><i class="fa-solid fa-photo-film"></i> Media Gallery</div>
+                        <div class="gallery-thumbnails">
+                            <div class="thumb-slot active" data-type="video" data-src="https://www.youtube.com/embed/FsVtl8qrceY">
+                                <i class="fa-solid fa-play"></i> Trailer
+                            </div>
+                            <div class="thumb-slot" data-type="image" data-src="src/medusus_ss1.jpg" title="Add screenshot to src/medusus_ss1.jpg">
+                                <i class="fa-solid fa-image"></i> Screenshot 1
+                            </div>
+                            <div class="thumb-slot" data-type="image" data-src="src/medusus_ss2.jpg" title="Add screenshot to src/medusus_ss2.jpg">
+                                <i class="fa-solid fa-cube"></i> 3D Render
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="project-info">
                     <h3>Medusus!</h3>
                     <div class="tags-list">
@@ -1500,7 +1587,28 @@
                 animateCanvas();
             }
 
-            // 3. Sticky Navbar & Back-to-Top Listener
+            // 3. Media Gallery Switcher Logic (Video vs Image Screenshots)
+            document.querySelectorAll('.thumb-slot').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const projectCard = this.closest('.pc-project-card');
+                    const mediaDisplay = projectCard.querySelector('.video-container');
+                    const siblings = this.parentElement.querySelectorAll('.thumb-slot');
+                    
+                    siblings.forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const type = this.getAttribute('data-type');
+                    const src = this.getAttribute('data-src');
+
+                    if (type === 'video') {
+                        mediaDisplay.innerHTML = `<iframe src="${src}" allowfullscreen loading="lazy"></iframe>`;
+                    } else if (type === 'image') {
+                        mediaDisplay.innerHTML = `<img src="${src}" alt="Game Screenshot" onerror="this.onerror=null; this.src='src/profile.jpeg'; alert('Image file not found at: ' + '${src}' + '. Add your screenshot to the src/ folder!');">`;
+                    }
+                });
+            });
+
+            // 4. Sticky Navbar & Back-to-Top Listener
             const navbar = document.getElementById('navbar');
             const backToTop = document.getElementById('backToTop');
 
@@ -1526,7 +1634,7 @@
                 }
             });
 
-            // 4. Mobile Menu Toggle
+            // 5. Mobile Menu Toggle
             const mobileMenu = document.getElementById('mobileMenu');
             const menuOpen = document.getElementById('menuOpen');
             const menuClose = document.getElementById('menuClose');
@@ -1538,7 +1646,7 @@
                 link.addEventListener('click', () => mobileMenu.classList.remove('open'));
             });
 
-            // 5. Scroll Reveal Animation (Intersection Observer)
+            // 6. Scroll Reveal Animation (Intersection Observer)
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1550,7 +1658,7 @@
 
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // 6. Email Copy to Clipboard Logic
+            // 7. Email Copy to Clipboard Logic
             const copyBtn = document.getElementById('copyBtn');
             const emailText = document.getElementById('emailText').innerText;
             const toast = document.getElementById('toast');
@@ -1568,7 +1676,7 @@
                 });
             });
 
-            // 7. Project Category Filter
+            // 8. Project Category Filter
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCategories = document.querySelectorAll('.project-category');
 
