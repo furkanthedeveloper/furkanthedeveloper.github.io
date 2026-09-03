@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furkan Süleyman Bozkurt | Indie Game Developer</title>
+    <style>
+        /* Genel Ayarlar & CSS Sıfırlama */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* YouTube Hata Ekranı Tonu: Derin siyah/gri ve sağ altta hafif magenta/mor parlaması */
+        body { 
+            background-color: #0f0f0f; 
+            background-image: radial-gradient(circle at 85% 100%, rgba(55, 20, 65, 0.4) 0%, rgba(15, 15, 15, 1) 50%);
+            background-attachment: fixed;
+            color: #e0e0e0; 
+            line-height: 1.6; 
+        }
+        
+        a { color: #4da6ff; text-decoration: none; transition: 0.3s; }
+        a:hover { color: #80c1ff; }
+        
+        /* Layout */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 70px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        section:last-child { border-bottom: none; }
+        
+        /* Header / Hero Section */
+        header { 
+            padding: 90px 20px; 
+            text-align: center; 
+            background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(15,15,15,0.8) 100%);
+            border-bottom: 2px solid rgba(77, 166, 255, 0.3); 
+        }
+        header h1 { font-size: 2.5rem; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        header h2 { font-size: 1.2rem; color: #4da6ff; font-weight: 400; margin-bottom: 25px; }
+        header p { color: #bbbbbb; }
+        
+        .btn { display: inline-block; background-color: #4da6ff; color: #0a0a0a; padding: 12px 24px; font-weight: bold; border-radius: 4px; text-transform: uppercase; margin: 5px; transition: 0.2s; }
+        .btn:hover { background-color: #80c1ff; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid #4da6ff; color: #4da6ff; }
+        .btn-outline:hover { background: #4da6ff; color: #0a0a0a; }
+
+        /* Başlıklar */
+        h3.section-title { font-size: 1.8rem; color: #ffffff; margin-bottom: 50px; text-transform: uppercase; text-align: center; letter-spacing: 1px; }
+
+        /* PC Oyunları (Yatay Layout) */
+        .project-row { display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 70px; align-items: center; }
+        .project-video { flex: 1 1 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; background-color: #000; }
+        .project-video iframe { width: 100%; aspect-ratio: 16/9; border-radius: 8px; border: none; display: block; }
+        .project-info { flex: 1 1 400px; }
+        .project-info h4 { font-size: 1.6rem; color: #4da6ff; margin-bottom: 12px; }
+        .project-info p { color: #cccccc; margin-bottom: 15px; }
+        
+        .tags { margin-bottom: 15px; }
+        .tag { display: inline-block; background-color: rgba(255,255,255,0.05); padding: 5px 12px; font-size: 0.8rem; border-radius: 4px; margin-right: 6px; margin-bottom: 6px; color: #aaaaaa; border: 1px solid rgba(255,255,255,0.1); }
+        
+        .achievements { margin-top: 15px; padding-left: 20px; color: #cccccc; font-size: 0.95rem; }
+        .achievements li { margin-bottom: 8px; }
+        .achievements strong { color: #eeeeee; }
+
+        /* Mobil Oyunlar (Dikey Layout - Grid) */
+        .mobile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .mobile-card { background-color: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .mobile-card:hover { border-color: rgba(77, 166, 255, 0.3); background-color: rgba(255,255,255,0.04); }
+        .mobile-card iframe { width: 100%; aspect-ratio: 9/16; border-radius: 8px; border: none; margin-bottom: 15px; display: block; box-shadow: 0 5px 15px rgba(0,0,0,0.5); background-color: #000; }
+        .mobile-card h4 { color: #4da6ff; margin-bottom: 10px; font-size: 1.3rem; }
+        .mobile-card p { color: #cccccc; font-size: 0.95rem; }
+
+        /* Jam & Okul Projeleri (Kart Layout) */
+        .jam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .jam-card { background-color: rgba(255,255,255,0.02); padding: 25px; border-radius: 8px; border-left: 4px solid #4da6ff; }
+        .jam-card h4 { color: #ffffff; margin-bottom: 8px; font-size: 1.2rem; }
+        .jam-card p { font-size: 0.95rem; color: #cccccc; }
+
+        /* Footer */
+        footer { text-align: center; padding: 40px 20px; background-color: #050505; color: #777777; font-size: 0.9rem; border-top: 1px solid #1a1a1a; }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header>
+        <div class="container">
+            <h1>Furkan Süleyman Bozkurt</h1>
+            <h2>Indie Game Developer & 3D Artist</h2>
+            <p style="max-width: 600px; margin: 0 auto 25px auto;">
+                Driven 3rd-year Digital Game Design student specializing in end-to-end solo development, multiplayer networking (Steam P2P, Unity Mirror), and 3D modeling. 
+            </p>
+            <a href="CV_Furkan_Bozkurt.pdf" class="btn" target="_blank">Download Resume (PDF)</a>
+            <a href="https://linkedin.com/in/furkansuleymanbozkurt" class="btn btn-outline" target="_blank">LinkedIn</a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: FEATURED PC GAMES -->
+    <section id="pc-games">
+        <div class="container">
+            <h3 class="section-title">Commercial PC Titles (Steam)</h3>
+            
+            <!-- Frick It -->
+            <div class="project-row">
+                <div class="project-video">
+                    <!-- src yerine data-src kullandık, JS ekrana girince bunu src'ye atayacak -->
+                    <iframe data-src="https://www.youtube.com/embed/6n2dgl4cLOA?autoplay=1&mute=1&loop=1&playlist=6n2dgl4cLOA&controls=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="project-info">
+                    <h4>Frick It</h4>
+                    <div class="tags">
+                        <span class="tag">Unity</span> <span class="tag">C#</span> <span class="tag">Steam P2P</span> <span class="tag">3D Modeling</span> <span class="tag">Solo Dev</span>
+                    </div>
+                    <p>A multiplayer survival game architected and developed entirely solo over 1.5 years. Handled everything from core game loop design to 3D environment modeling and publishing.</p>
+                    <ul class="achievements">
+                        <li><strong>Key Achievement:</strong> Successfully implemented a seamless Steam P2P co-op network infrastructure from scratch.</li>
+                        <li><strong>What I Learned:</strong> Mastered client-server synchronization, managing complex state machines for survival mechanics, and the end-to-end Steamworks publishing pipeline.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Medusus -->
+            <div class="project-row">
+                <div class="project-info" style="order: 2;">
+                    <h4>Medusus!</h4>
+                    <div class="tags">
+                        <span class="tag">Unity Mirror</span> <span class="tag">Multiplayer</span> <span class="tag">Prop-hunt</span> <span class="tag">Rapid Dev</span>
+                    </div>
+                    <p>An asymmetrical hide-and-seek (prop-hunt) game featuring complex transformation mechanics. Earned official selection for the Steam Next Fest.</p>
+                    <ul class="achievements">
+                        <li><strong>Key Achievement:</strong> Developed a fully playable, networked demo from scratch in just 3 intensive weeks.</li>
+                        <li><strong>What I Learned:</strong> Rapid prototyping under tight deadlines, optimizing Unity Mirror for real-time player physics, and designing balanced asymmetrical gameplay loops.</li>
+                    </ul>
+                </div>
+                <div class="project-video" style="order: 1;">
+                    <iframe data-src="https://www.youtube.com/embed/FsVtl8qrceY?autoplay=1&mute=1&loop=1&playlist=FsVtl8qrceY&controls=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: MOBILE GAMES -->
+    <section id="mobile-games">
+        <div class="container">
+            <h3 class="section-title">Mobile Portfolio (Google Play)</h3>
+            <div class="mobile-grid">
+                
+                <!-- Stick Of Duty -->
+                <div class="mobile-card">
+                    <iframe data-src="https://www.youtube.com/embed/TR3kjxQ7eKs?autoplay=1&mute=1&loop=1&playlist=TR3kjxQ7eKs&controls=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <h4>Stick Of Duty: Zombies</h4>
+                    <div class="tags"><span class="tag">2D Ragdoll</span> <span class="tag">Linux Server</span></div>
+                    <p>A fast-paced 2D ragdoll action game featuring real-time multiplayer.</p>
+                    <ul class="achievements">
+                        <li><strong>Tech Highlight:</strong> Deployed a dedicated Linux server to ensure precise character synchronization across international connections.</li>
+                    </ul>
+                </div>
+
+                <!-- Right Ball -->
+                <div class="mobile-card">
+                    <iframe data-src="https://www.youtube.com/embed/SUQjzuoVSfs?autoplay=1&mute=1&loop=1&playlist=SUQjzuoVSfs&controls=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <h4>Right Ball</h4>
+                    <div class="tags"><span class="tag">Hypercasual</span> <span class="tag">IAP & Ads</span></div>
+                    <p>An addictive hypercasual title focused on retention and smooth core mechanics.</p>
+                    <ul class="achievements">
+                        <li><strong>Tech Highlight:</strong> Successfully integrated monetization SDKs (Ad Networks) and managed the complete product lifecycle on Google Play.</li>
+                    </ul>
+                </div>
+
+                <!-- MyTeammates -->
+                <div class="mobile-card">
+                    <iframe data-src="https://www.youtube.com/embed/Ca5WECMYmY0?autoplay=1&mute=1&loop=1&playlist=Ca5WECMYmY0&controls=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <h4>MyTeammates</h4>
+                    <div class="tags"><span class="tag">Hypercasual</span> <span class="tag">Leaderboards</span></div>
+                    <p>A reflex-based mobile game with competitive elements.</p>
+                    <ul class="achievements">
+                        <li><strong>Tech Highlight:</strong> Implemented global leaderboards and optimized UI/UX for seamless mobile interaction.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ACADEMIC & GAME JAMS -->
+    <section id="academic-jams">
+        <div class="container">
+            <h3 class="section-title">Academic Projects & Game Jams</h3>
+            <div class="jam-grid">
+                
+                <div class="jam-card">
+                    <h4>Albino And Curse</h4>
+                    <div class="tags"><span class="tag">Academic Project</span> <span class="tag">2D Pixel Art</span> <span class="tag">Turn-Based RPG</span></div>
+                    <p>Designed and developed from scratch for a university module within a few weeks. Handled both programming of the Undertale-style turn-based combat and custom 2D pixel art creation.</p>
+                </div>
+
+                <div class="jam-card">
+                    <h4>The Amber Path</h4>
+                    <div class="tags"><span class="tag">Game Jam</span> <span class="tag">Team Project</span> <span class="tag">Rapid Dev</span></div>
+                    <p>Developed within a strict 48-72 hour deadline in a team environment. Focused on agile task delegation, rapid mechanics implementation, and polishing the core aesthetic under intense time pressure.</p>
+                </div>
+
+                <div class="jam-card">
+                    <h4>The Mindbreak</h4>
+                    <div class="tags"><span class="tag">Game Jam</span> <span class="tag">Team Project</span> <span class="tag">Fast Iteration</span></div>
+                    <p>A prototype created during a high-stakes Game Jam. Showcases the ability to brainstorm, scope down features realistically, and deliver a playable core loop collaboratively.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>furkansuleymancontact@gmail.com | Based in Balıkesir, Turkey</p>
+            <p>&copy; 2026 Furkan Süleyman Bozkurt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCROLL AUTOPLAY JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Ekrana girme (Intersection) ayarları
+            let options = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.5 // Videonun %50'si ekrana girince çalıştır
+            };
+
+            let observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let iframe = entry.target;
+                        // Eğer src henüz atanmadıysa (yani video yüklenmediyse), data-src'den çekip yükle.
+                        // URL içine eklediğimiz "autoplay=1&mute=1" sayesinde yüklenir yüklenmez sessizce başlar.
+                        if (!iframe.src) {
+                            iframe.src = iframe.getAttribute('data-src');
+                        }
+                    }
+                });
+            }, options);
+
+            // data-src özelliğine sahip tüm iframe'leri gözlemle
+            document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+                observer.observe(iframe);
+            });
+        });
+    </script>
+</body>
+</html>
