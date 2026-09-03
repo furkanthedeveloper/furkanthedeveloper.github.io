@@ -23,20 +23,23 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Lenis Smooth Scroll CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
     <style>
         /* ==========================================================================
            1. CORE DESIGN SYSTEM & VARIABLES
            ========================================================================== */
         :root {
-            --bg-dark: #07090e;
-            --bg-card: rgba(15, 22, 36, 0.7);
-            --bg-card-hover: rgba(22, 32, 52, 0.85);
-            --bg-nav: rgba(7, 9, 14, 0.85);
+            --bg-dark: #06080d;
+            --bg-card: rgba(14, 20, 34, 0.65);
+            --bg-card-hover: rgba(22, 32, 54, 0.85);
+            --bg-nav: rgba(6, 8, 13, 0.85);
             
             --accent-green: #10b981;
             --accent-green-bright: #34d399;
             --accent-green-dark: #059669;
-            --accent-glow: rgba(16, 185, 129, 0.15);
+            --accent-glow: rgba(16, 185, 129, 0.18);
             --accent-cyan: #06b6d4;
 
             --text-primary: #f8fafc;
@@ -44,7 +47,7 @@
             --text-muted: #64748b;
             
             --border-light: rgba(255, 255, 255, 0.07);
-            --border-glow: rgba(16, 185, 129, 0.3);
+            --border-glow: rgba(16, 185, 129, 0.35);
 
             --font-heading: 'Outfit', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -52,11 +55,28 @@
 
             --radius-sm: 10px;
             --radius-md: 16px;
-            --radius-lg: 24px;
+            --radius-lg: 22px;
             --radius-full: 9999px;
 
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Lenis Smooth Scroll Baseline */
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
         }
 
         /* Reset & Base Setup */
@@ -64,11 +84,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
         }
 
         body {
@@ -95,31 +110,31 @@
         .ambient-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.45;
+            filter: blur(140px);
+            opacity: 0.4;
         }
 
         .orb-1 {
-            top: -10%;
-            left: 20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.25), transparent 70%);
+            top: -15%;
+            left: 25%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.22), transparent 70%);
         }
 
         .orb-2 {
-            top: 40%;
+            top: 35%;
             right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent 70%);
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.16), transparent 70%);
         }
 
         .orb-3 {
-            bottom: -10%;
+            bottom: -15%;
             left: 10%;
-            width: 500px;
-            height: 500px;
+            width: 550px;
+            height: 550px;
             background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
         }
 
@@ -309,7 +324,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 12px 24px;
+            padding: 13px 26px;
             font-family: var(--font-body);
             font-size: 0.95rem;
             font-weight: 600;
@@ -349,7 +364,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: var(--radius-full);
             background: rgba(16, 185, 129, 0.08);
             border: 1px solid rgba(16, 185, 129, 0.2);
@@ -377,14 +392,28 @@
         }
 
         /* ==========================================================================
-           4. HERO SECTION REDESIGN (PROFILE PHOTO & SLEEK ELEVATION)
+           4. HERO SECTION (DYNAMIC CANVAS & CLEAN UNCLUTTERED LAYOUT)
            ========================================================================== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 130px;
-            padding-bottom: 70px;
+            padding-top: 140px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dynamic Particle Canvas Backdrop */
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.65;
         }
 
         .hero-layout {
@@ -392,29 +421,31 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Profile Avatar Frame */
+        /* Profile Avatar Frame - enlarged & sleek */
         .hero-avatar-wrapper {
             position: relative;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .hero-avatar-frame {
-            width: 130px;
-            height: 130px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            padding: 4px;
+            padding: 5px;
             background: linear-gradient(135deg, var(--accent-green-bright), var(--accent-cyan));
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.35), inset 0 0 15px rgba(6, 182, 212, 0.3);
             transition: var(--transition-smooth);
         }
 
         .hero-avatar-frame:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 45px rgba(16, 185, 129, 0.45);
+            transform: scale(1.06);
+            box-shadow: 0 0 55px rgba(16, 185, 129, 0.5);
         }
 
         .hero-avatar-img {
@@ -426,13 +457,14 @@
             display: block;
         }
 
+        /* Clean Headline: FURKAN SÜLEYMAN BOZKURT */
         .hero-title {
             font-family: var(--font-heading);
             font-size: 3.8rem;
             font-weight: 800;
-            line-height: 1.12;
+            line-height: 1.1;
             letter-spacing: -1.5px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             color: #ffffff;
         }
 
@@ -444,19 +476,39 @@
 
         .hero-subtitle {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
             color: var(--accent-green-bright);
             margin-bottom: 20px;
             letter-spacing: 0.5px;
         }
 
-        .hero-description {
-            font-size: 1.1rem;
+        /* Tech Pills replacing long paragraph */
+        .hero-tech-pills {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .hero-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.88rem;
             color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 34px;
-            max-width: 700px;
+            font-family: var(--font-mono);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-fast);
+        }
+
+        .hero-pill:hover {
+            border-color: var(--border-glow);
+            color: var(--accent-green-bright);
+            transform: translateY(-2px);
         }
 
         .hero-cta {
@@ -465,25 +517,26 @@
             justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
-        /* Modernized Stat Cards */
+        /* Airy & Spacious Stat Cards Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 28px;
             width: 100%;
+            max-width: 1080px;
             margin-top: 10px;
         }
 
         .stat-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
-            border-top: 2px solid rgba(16, 185, 129, 0.4);
-            padding: 22px 16px;
-            border-radius: var(--radius-md);
-            backdrop-filter: blur(16px);
+            border-top: 2px solid rgba(16, 185, 129, 0.45);
+            padding: 28px 22px;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(20px);
             text-align: center;
             transition: var(--transition-smooth);
         }
@@ -491,28 +544,28 @@
         .stat-card:hover {
             border-color: var(--border-glow);
             border-top-color: var(--accent-green-bright);
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             background: var(--bg-card-hover);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .stat-icon {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--accent-green-bright);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .stat-number {
             font-family: var(--font-mono);
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #ffffff;
             line-height: 1.1;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
             font-weight: 600;
             text-transform: uppercase;
@@ -660,7 +713,7 @@
         }
 
         .achievements-box {
-            background: rgba(7, 9, 14, 0.6);
+            background: rgba(6, 8, 13, 0.6);
             border-radius: var(--radius-sm);
             padding: 18px 20px;
             border: 1px solid rgba(255, 255, 255, 0.04);
@@ -800,7 +853,7 @@
         }
 
         .contact-card {
-            background: linear-gradient(135deg, rgba(15, 22, 36, 0.9), rgba(9, 13, 22, 0.95));
+            background: linear-gradient(135deg, rgba(14, 20, 34, 0.9), rgba(8, 12, 20, 0.95));
             border: 1px solid var(--border-glow);
             border-radius: var(--radius-lg);
             padding: 60px 40px;
@@ -830,7 +883,7 @@
             display: inline-flex;
             align-items: center;
             gap: 16px;
-            background: rgba(7, 9, 14, 0.8);
+            background: rgba(6, 8, 13, 0.8);
             border: 1px solid var(--border-light);
             padding: 10px 10px 10px 24px;
             border-radius: var(--radius-full);
@@ -953,7 +1006,7 @@
            10. RESPONSIVE BREAKPOINTS
            ========================================================================== */
         @media (max-width: 1024px) {
-            .hero-title { font-size: 3.2rem; }
+            .hero-title { font-size: 3rem; }
             .pc-project-card, .pc-project-card.reverse {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -963,6 +1016,7 @@
             }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
             .jam-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -972,10 +1026,11 @@
         @media (max-width: 768px) {
             .nav-links, .nav-actions .btn { display: none; }
             .mobile-toggle { display: block; }
-            .hero-title { font-size: 2.4rem; }
-            .hero-subtitle { font-size: 1.25rem; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .hero-avatar-frame { width: 130px; height: 130px; }
             .mobile-grid, .jam-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .contact-card { padding: 40px 20px; }
             .email-copy-box {
                 flex-direction: column;
@@ -1044,12 +1099,15 @@
         </div>
     </div>
 
-    <!-- HERO SECTION REDESIGN -->
+    <!-- HERO SECTION (DYNAMIC CANVAS & CLEAN UNCLUTTERED TITLE) -->
     <section class="hero" id="about">
+        <!-- Interactive 3D Node Mesh Canvas Backdrop -->
+        <canvas id="heroCanvas"></canvas>
+
         <div class="container">
             <div class="hero-layout reveal">
                 
-                <!-- Profile Avatar Picture -->
+                <!-- Profile Avatar Picture (Enlarged) -->
                 <div class="hero-avatar-wrapper">
                     <div class="hero-avatar-frame">
                         <img src="src/profile.jpeg" alt="Furkan Süleyman Bozkurt" class="hero-avatar-img" onerror="this.src='src/profile.jpg'">
@@ -1060,17 +1118,22 @@
                     <span class="status-dot"></span> Available for Game Dev & 3D Artist Roles
                 </div>
 
+                <!-- Clean Punchy Headline -->
                 <h1 class="hero-title">
-                    Crafting Immersive <span class="gradient-text">Game Worlds</span> & Multiplayer Logic
+                    Furkan <span class="gradient-text">Süleyman Bozkurt</span>
                 </h1>
 
                 <h2 class="hero-subtitle">
                     Indie Game Developer & 3D Artist
                 </h2>
 
-                <p class="hero-description">
-                    Driven 3rd-year Digital Game Design student specializing in end-to-end solo development, multiplayer networking (Steam P2P, Unity Mirror), state-machine mechanics, and 3D modeling.
-                </p>
+                <!-- Tech Stack Pills -->
+                <div class="hero-tech-pills">
+                    <span class="hero-pill"><i class="fa-brands fa-unity"></i> Unity Engine</span>
+                    <span class="hero-pill"><i class="fa-solid fa-code"></i> C# Development</span>
+                    <span class="hero-pill"><i class="fa-solid fa-cube"></i> 3D Modeling</span>
+                    <span class="hero-pill"><i class="fa-solid fa-network-wired"></i> Steam P2P & Mirror</span>
+                </div>
 
                 <div class="hero-cta">
                     <a href="#pc-games" class="btn btn-primary">
@@ -1081,7 +1144,7 @@
                     </a>
                 </div>
 
-                <!-- Upgraded Glass Stat Cards -->
+                <!-- Airy & Spacious Glass Stat Cards -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fa-solid fa-gamepad"></i></div>
@@ -1328,10 +1391,117 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- JAVASCRIPT UX CONTROLLER -->
+    <!-- JAVASCRIPT UX & SMOOTH SCROLL CONTROLLER -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Sticky Navbar & Back-to-Top Scroll Listener
+            // 1. Initialize Lenis Butter-Smooth Scrolling
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    orientation: 'vertical',
+                    gestureOrientation: 'vertical',
+                    smoothWheel: true,
+                    wheelMultiplier: 1.0,
+                    touchMultiplier: 1.5
+                });
+
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+
+                // Smooth scroll to anchors with Lenis
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') {
+                            lenis.scrollTo(0);
+                        } else {
+                            const targetEl = document.querySelector(targetId);
+                            if (targetEl) lenis.scrollTo(targetEl, { offset: -60 });
+                        }
+                    });
+                });
+            }
+
+            // 2. Interactive 3D Node Mesh Particle Canvas
+            const canvas = document.getElementById('heroCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let width = canvas.width = canvas.offsetWidth;
+                let height = canvas.height = canvas.offsetHeight;
+
+                window.addEventListener('resize', () => {
+                    width = canvas.width = canvas.offsetWidth;
+                    height = canvas.height = canvas.offsetHeight;
+                });
+
+                const particles = [];
+                const particleCount = 45;
+
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        vx: (Math.random() - 0.5) * 0.8,
+                        vy: (Math.random() - 0.5) * 0.8,
+                        size: Math.random() * 2 + 1,
+                        alpha: Math.random() * 0.5 + 0.2
+                    });
+                }
+
+                let mouseX = width / 2;
+                let mouseY = height / 2;
+
+                window.addEventListener('mousemove', (e) => {
+                    const rect = canvas.getBoundingClientRect();
+                    mouseX = e.clientX - rect.left;
+                    mouseY = e.clientY - rect.top;
+                });
+
+                function animateCanvas() {
+                    ctx.clearRect(0, 0, width, height);
+
+                    for (let i = 0; i < particles.length; i++) {
+                        const p = particles[i];
+                        p.x += p.vx;
+                        p.y += p.vy;
+
+                        if (p.x < 0 || p.x > width) p.vx *= -1;
+                        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(52, 211, 153, ${p.alpha})`;
+                        ctx.fill();
+
+                        // Connect close particles with translucent lines
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const p2 = particles[j];
+                            const dx = p.x - p2.x;
+                            const dy = p.y - p2.y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < 130) {
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.strokeStyle = `rgba(16, 185, 129, ${0.18 * (1 - dist / 130)})`;
+                                ctx.lineWidth = 0.8;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+
+                    requestAnimationFrame(animateCanvas);
+                }
+                animateCanvas();
+            }
+
+            // 3. Sticky Navbar & Back-to-Top Listener
             const navbar = document.getElementById('navbar');
             const backToTop = document.getElementById('backToTop');
 
@@ -1350,10 +1520,14 @@
             });
 
             backToTop.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (typeof Lenis !== 'undefined') {
+                    window.lenis ? window.lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             });
 
-            // 2. Mobile Menu Toggle
+            // 4. Mobile Menu Toggle
             const mobileMenu = document.getElementById('mobileMenu');
             const menuOpen = document.getElementById('menuOpen');
             const menuClose = document.getElementById('menuClose');
@@ -1365,7 +1539,7 @@
                 link.addEventListener('click', () => mobileMenu.classList.remove('open'));
             });
 
-            // 3. Scroll Reveal Animation (Intersection Observer)
+            // 5. Scroll Reveal Animation (Intersection Observer)
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1373,11 +1547,11 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.12 });
 
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // 4. Email Copy to Clipboard Logic
+            // 6. Email Copy to Clipboard Logic
             const copyBtn = document.getElementById('copyBtn');
             const emailText = document.getElementById('emailText').innerText;
             const toast = document.getElementById('toast');
@@ -1395,7 +1569,7 @@
                 });
             });
 
-            // 5. Project Category Filter
+            // 7. Project Category Filter
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCategories = document.querySelectorAll('.project-category');
 
