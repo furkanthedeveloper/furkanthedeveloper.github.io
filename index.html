@@ -13,7 +13,7 @@
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Furkan Süleyman Bozkurt | Indie Game Developer & 3D Artist">
-    <meta property="og:description" content="Explore commercial PC titles, mobile games, and game jam projects built with Unity, C#, and custom 3D art.">
+    <meta property="og:description" content="Explore commercial Steam titles, mobile games, and game jam projects built with Unity, C#, and custom 3D art.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +55,7 @@
 
             --radius-sm: 10px;
             --radius-md: 16px;
-            --radius-lg: 22px;
+            --radius-lg: 24px;
             --radius-full: 9999px;
 
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -149,9 +149,9 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         section {
@@ -160,7 +160,7 @@
         }
 
         /* ==========================================================================
-           2. HEADER & NAVIGATION BAR
+           2. HEADER & NAVIGATION BAR (NO FLASHING LINES)
            ========================================================================== */
         header.navbar {
             position: fixed;
@@ -168,17 +168,19 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 22px 0;
             transition: var(--transition-smooth);
             background: transparent;
+            border-bottom: 1px solid transparent; /* Prevents layout jump & white flash */
+            will-change: padding, background-color, border-color, box-shadow;
         }
 
         header.navbar.scrolled {
-            padding: 12px 0;
+            padding: 14px 0;
             background: var(--bg-nav);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-light);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.12); /* Soft emerald glass glow */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
@@ -629,29 +631,29 @@
         }
 
         /* ==========================================================================
-           6. COMMERCIAL PC TITLES SECTION (ZIG-ZAG FEATURE CARDS)
+           6. COMMERCIAL STEAM TITLES SECTION (AIRY & WIDE PROJECT SHOWCASE)
            ========================================================================== */
         .pc-project-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
-            padding: 36px;
-            margin-bottom: 50px;
-            backdrop-filter: blur(16px);
+            padding: 44px 48px;
+            margin-bottom: 70px;
+            backdrop-filter: blur(20px);
             transition: var(--transition-smooth);
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 48px;
             align-items: center;
         }
 
         .pc-project-card:hover {
             border-color: var(--border-glow);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
         }
 
         .pc-project-card.reverse {
-            grid-template-columns: 0.9fr 1.1fr;
+            grid-template-columns: 1fr 1.25fr;
         }
 
         .pc-project-card.reverse .project-media {
@@ -666,8 +668,8 @@
             border-radius: var(--radius-md);
             overflow: hidden;
             background: #000000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .video-container iframe {
@@ -681,51 +683,52 @@
 
         .project-info h3 {
             font-family: var(--font-heading);
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2.5rem;
+            font-weight: 800;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .tags-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 22px;
         }
 
         .tag-chip {
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid rgba(16, 185, 129, 0.25);
             color: var(--accent-green-bright);
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: var(--radius-full);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             font-weight: 600;
         }
 
         .project-desc {
             color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 24px;
-            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            line-height: 1.8;
         }
 
         .achievements-box {
-            background: rgba(6, 8, 13, 0.6);
-            border-radius: var(--radius-sm);
-            padding: 18px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(5, 7, 12, 0.7);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .achievement-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 10px;
-            font-size: 0.92rem;
+            gap: 14px;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
             color: var(--text-secondary);
+            line-height: 1.65;
         }
 
         .achievement-item:last-child {
@@ -734,7 +737,8 @@
 
         .achievement-item i {
             color: var(--accent-green-bright);
-            margin-top: 4px;
+            font-size: 1.1rem;
+            margin-top: 3px;
         }
 
         .achievement-item strong {
@@ -747,14 +751,14 @@
         .mobile-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 32px;
         }
 
         .mobile-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius-md);
-            padding: 24px;
+            padding: 26px;
             backdrop-filter: blur(16px);
             transition: var(--transition-smooth);
             display: flex;
@@ -776,7 +780,7 @@
             border-radius: var(--radius-sm);
             overflow: hidden;
             background: #000000;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -800,8 +804,9 @@
 
         .mobile-card p {
             color: var(--text-secondary);
-            font-size: 0.92rem;
+            font-size: 0.94rem;
             margin-top: auto;
+            line-height: 1.6;
         }
 
         /* ==========================================================================
@@ -810,7 +815,7 @@
         .jam-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 32px;
         }
 
         .jam-card {
@@ -818,7 +823,7 @@
             border: 1px solid var(--border-light);
             border-left: 4px solid var(--accent-green);
             border-radius: var(--radius-md);
-            padding: 28px;
+            padding: 30px;
             backdrop-filter: blur(16px);
             transition: var(--transition-smooth);
         }
@@ -842,7 +847,7 @@
         .jam-card p {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         /* ==========================================================================
@@ -1005,11 +1010,13 @@
         /* ==========================================================================
            10. RESPONSIVE BREAKPOINTS
            ========================================================================== */
-        @media (max-width: 1024px) {
+        @media (max-width: 1100px) {
+            .container { padding: 0 24px; }
             .hero-title { font-size: 3rem; }
             .pc-project-card, .pc-project-card.reverse {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 36px;
+                padding: 36px;
             }
             .pc-project-card.reverse .project-media {
                 order: 0;
@@ -1029,6 +1036,7 @@
             .hero-title { font-size: 2.2rem; }
             .hero-subtitle { font-size: 1.2rem; }
             .hero-avatar-frame { width: 130px; height: 130px; }
+            .pc-project-card { padding: 24px; gap: 24px; }
             .mobile-grid, .jam-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .contact-card { padding: 40px 20px; }
@@ -1062,7 +1070,7 @@
 
             <nav class="nav-links">
                 <a href="#about" class="nav-link active">About</a>
-                <a href="#pc-games" class="nav-link">PC Games</a>
+                <a href="#steam-games" class="nav-link">Steam Games</a>
                 <a href="#mobile-games" class="nav-link">Mobile</a>
                 <a href="#academic-jams" class="nav-link">Jams & Academic</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -1088,7 +1096,7 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
         <a href="#about" class="nav-link mobile-link">About</a>
-        <a href="#pc-games" class="nav-link mobile-link">PC Games</a>
+        <a href="#steam-games" class="nav-link mobile-link">Steam Games</a>
         <a href="#mobile-games" class="nav-link mobile-link">Mobile Games</a>
         <a href="#academic-jams" class="nav-link mobile-link">Jams & Academic</a>
         <a href="#contact" class="nav-link mobile-link">Contact</a>
@@ -1136,7 +1144,7 @@
                 </div>
 
                 <div class="hero-cta">
-                    <a href="#pc-games" class="btn btn-primary">
+                    <a href="#steam-games" class="btn btn-primary">
                         <i class="fa-solid fa-gamepad"></i> Explore Featured Work
                     </a>
                     <a href="src/CV - Furkan Süleyman Bozkurt.pdf" target="_blank" download="CV - Furkan Süleyman Bozkurt.pdf" class="btn btn-outline">
@@ -1178,16 +1186,16 @@
         <!-- PROJECT FILTER BUTTONS -->
         <div class="filter-container reveal">
             <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="pc">Commercial PC</button>
+            <button class="filter-btn" data-filter="steam">Steam Titles</button>
             <button class="filter-btn" data-filter="mobile">Mobile Games</button>
             <button class="filter-btn" data-filter="jam">Academic & Jams</button>
         </div>
 
-        <!-- SECTION 1: COMMERCIAL PC TITLES -->
-        <section id="pc-games" class="project-category" data-category="pc">
+        <!-- SECTION 1: COMMERCIAL STEAM TITLES (WIDER & AIRIER) -->
+        <section id="steam-games" class="project-category" data-category="steam">
             <div class="section-header reveal">
-                <span class="section-tag">// Flagship Projects</span>
-                <h2 class="section-title">Commercial PC Titles</h2>
+                <span class="section-tag">// Flagship Steam Releases</span>
+                <h2 class="section-title">Commercial Steam Titles</h2>
             </div>
 
             <!-- Project 1: Frick It -->
@@ -1452,15 +1460,6 @@
                         alpha: Math.random() * 0.5 + 0.2
                     });
                 }
-
-                let mouseX = width / 2;
-                let mouseY = height / 2;
-
-                window.addEventListener('mousemove', (e) => {
-                    const rect = canvas.getBoundingClientRect();
-                    mouseX = e.clientX - rect.left;
-                    mouseY = e.clientY - rect.top;
-                });
 
                 function animateCanvas() {
                     ctx.clearRect(0, 0, width, height);
