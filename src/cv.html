@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Furkan Süleyman Bozkurt</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -15,8 +14,8 @@
         }
 
         html {
-            background-color: #1e293b;
-            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            background-color: #333333;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
@@ -24,92 +23,64 @@
             height: 297mm;
             margin: 20px auto;
             background-color: #ffffff;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
-            color: #1e293b;
+            box-shadow: 0px 5px 25px rgba(0,0,0,0.5);
+            color: #111111;
             font-size: 11.5px;
-            line-height: 1.48;
+            line-height: 1.45;
         }
 
-        /* SITE MATCHER HEADER - DARK ELEVATED INDIE DEV AESTHETIC */
+        /* CLEAN PROFESSIONAL EXECUTIVE HEADER */
         .header {
-            background: linear-gradient(135deg, #06080d 0%, #0d131f 100%);
+            background-color: #111827;
             color: #ffffff;
             text-align: center;
             padding: 24px 20px 20px 20px;
-            border-bottom: 3px solid #10b981;
-            position: relative;
         }
 
         .header h1 {
             margin-bottom: 4px;
-            font-size: 24px;
-            font-weight: 800;
+            font-size: 22px;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: #ffffff;
         }
 
         .header h2 {
-            margin-bottom: 12px;
-            font-size: 12.5px;
-            font-weight: 700;
-            color: #10b981;
+            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #9ca3af;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
-        .header .contact-info {
+        .header .contact-line {
             font-size: 10.5px;
-            color: #cbd5e1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 4px;
+            color: #e5e7eb;
+            margin-top: 3px;
         }
 
-        .header .contact-info a {
-            color: #38bdf8;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .header .contact-info a.portfolio-link {
-            color: #34d399;
-            font-weight: 700;
-            background: rgba(16, 185, 129, 0.12);
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+        .header .contact-line a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: normal;
         }
 
         .content {
-            padding: 22px 36px 15px 36px;
+            padding: 24px 38px 15px 38px;
         }
 
         h3 {
             font-size: 12.5px;
-            font-weight: 800;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #0f172a;
-            border-bottom: 2px solid #0f172a;
+            letter-spacing: 0.5px;
+            color: #111111;
+            border-bottom: 1.5px solid #111111;
             padding-bottom: 2px;
             margin-top: 20px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        h3::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 12px;
-            background: #10b981;
-            border-radius: 2px;
+            margin-bottom: 8px;
         }
 
         .content > h3:first-of-type {
@@ -119,7 +90,7 @@
         p {
             margin-bottom: 8px;
             text-align: justify;
-            color: #334155;
+            color: #222222;
         }
 
         .grid-row {
@@ -129,29 +100,29 @@
         }
         
         .grid-title {
-            font-weight: 700;
-            color: #0f172a;
+            font-weight: bold;
+            color: #111111;
             width: 170px;
             flex-shrink: 0;
         }
 
         .grid-row div:last-child {
-            color: #334155;
+            color: #222222;
         }
 
         .flex-between {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            font-weight: 700;
-            color: #0f172a;
+            font-weight: bold;
+            color: #111111;
             margin-top: 14px;
             margin-bottom: 4px;
         }
         
         .sub-header {
-            font-weight: 700;
-            color: #0f172a;
+            font-weight: bold;
+            color: #111111;
             margin-top: 14px;
             margin-bottom: 4px;
         }
@@ -164,11 +135,11 @@
         li {
             margin-bottom: 5px;
             text-align: justify;
-            color: #334155;
+            color: #222222;
         }
 
         li strong {
-            color: #0f172a;
+            color: #111111;
         }
 
         @media print {
@@ -192,14 +163,11 @@
     <div class="header">
         <h1>Furkan Süleyman Bozkurt</h1>
         <h2>Indie Game Developer & 3D Artist</h2>
-        <div class="contact-info">
-            <span><i class="fa-solid fa-location-dot" style="color: #10b981;"></i> Balıkesir, Turkey</span>
-            <span><i class="fa-solid fa-phone" style="color: #10b981;"></i> +90 543 266 73 70</span>
-            <span><i class="fa-solid fa-envelope" style="color: #10b981;"></i> furkansuleymancontact@gmail.com</span>
+        <div class="contact-line">
+            Balıkesir, Turkey &nbsp;|&nbsp; +90 543 266 73 70 &nbsp;|&nbsp; furkansuleymancontact@gmail.com
         </div>
-        <div class="contact-info" style="margin-top: 6px;">
-            <span><i class="fa-brands fa-linkedin" style="color: #38bdf8;"></i> linkedin.com/in/furkansuleymanbozkurt</span>
-            <span><i class="fa-solid fa-globe" style="color: #34d399;"></i> <a href="https://furkanthedeveloper.github.io" target="_blank" class="portfolio-link">https://furkanthedeveloper.github.io</a></span>
+        <div class="contact-line">
+            <a href="https://linkedin.com/in/furkansuleymanbozkurt" target="_blank">linkedin.com/in/furkansuleymanbozkurt</a> &nbsp;|&nbsp; <a href="https://furkanthedeveloper.github.io" target="_blank">https://furkanthedeveloper.github.io</a>
         </div>
     </div>
 
@@ -236,7 +204,7 @@
         
         <div class="flex-between">
             <div>Independent Game Developer (Solo Indie Dev) - PC & Steam</div>
-            <div style="font-weight: normal; font-size: 10.5px; color: #64748b;">2022 - Present</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #555555;">2022 - Present</div>
         </div>
         <ul>
             <li><strong>MEDUSUS! (PC/Steam):</strong> Developed a playable demo featuring complex prop-hunt and asymmetrical hide-and-seek mechanics from scratch within an intensive 3-week period, set to participate with a playable demo in the upcoming <strong>Steam Next Fest (October 2026)</strong>. Built the core multiplayer foundation utilizing Unity Mirror.</li>
@@ -245,7 +213,7 @@
 
         <div class="flex-between">
             <div>Mobile Game Developer - Android & Google Play</div>
-            <div style="font-weight: normal; font-size: 10.5px; color: #64748b;">2020 - 2022</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #555555;">2020 - 2022</div>
         </div>
         <ul>
             <li><strong>Stick Of Duty: Zombies:</strong> Programmed a 2D ragdoll action game and integrated an online multiplayer infrastructure utilizing international servers for real-time character synchronization.</li>
@@ -262,9 +230,9 @@
         <h3>Education</h3>
         <div class="flex-between">
             <div>European University of Lefke</div>
-            <div style="font-weight: normal; font-size: 10.5px; color: #64748b;">Expected Graduation: 2027</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #555555;">Expected Graduation: 2027</div>
         </div>
-        <div style="font-style: italic; margin-bottom: 8px; color: #475569;">Bachelor's Degree in Digital Game Design | 3rd Year Student | CGPA: 3.67 / 4.00</div>
+        <div style="font-style: italic; margin-bottom: 8px; color: #444444;">Bachelor's Degree in Digital Game Design | 3rd Year Student | CGPA: 3.67 / 4.00</div>
 
         <!-- Languages -->
         <h3>Languages</h3>
