@@ -630,7 +630,7 @@
         }
 
         /* ==========================================================================
-           6. COMMERCIAL STEAM TITLES (UNBOXED SIDE-BY-SIDE AIRY SHOWCASE)
+           6. COMMERCIAL STEAM TITLES (UNBOXED SIDE-BY-SIDE AIRY SHOWCASE WITH AMBIENT GLOW)
            ========================================================================== */
         .steam-game-item {
             display: grid;
@@ -638,8 +638,39 @@
             gap: 48px;
             align-items: flex-start;
             margin-bottom: 90px;
-            padding-bottom: 60px;
+            padding: 24px 20px 60px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            isolation: isolate;
+        }
+
+        /* Smooth, subtle emerald/cyan light beam behind each game showcase */
+        .steam-game-item::before {
+            content: '';
+            position: absolute;
+            top: 40%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            width: 580px;
+            height: 380px;
+            background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.14) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 75%);
+            filter: blur(65px);
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.85;
+            transition: var(--transition-smooth);
+            border-radius: 50%;
+        }
+
+        .steam-game-item.reverse::before {
+            left: 80%;
+            background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.14) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 75%);
+        }
+
+        .steam-game-item:hover::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.08);
+            filter: blur(55px);
         }
 
         .steam-game-item.reverse {
@@ -658,6 +689,8 @@
 
         .game-media {
             width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         .video-container {
@@ -690,6 +723,8 @@
         .game-info {
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
 
         .game-title-row {
