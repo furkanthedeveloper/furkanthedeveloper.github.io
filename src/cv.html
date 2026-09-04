@@ -14,8 +14,8 @@
         }
 
         html {
-            background-color: #1e293b;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+            background-color: #333333;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
@@ -23,77 +23,64 @@
             height: 297mm;
             margin: 20px auto;
             background-color: #ffffff;
-            box-shadow: 0px 8px 30px rgba(0,0,0,0.45);
-            color: #1e293b;
-            font-size: 11px;
-            line-height: 1.48;
-            -webkit-font-smoothing: antialiased;
+            box-shadow: 0px 5px 25px rgba(0,0,0,0.5);
+            color: #111111;
+            font-size: 11.5px;
+            line-height: 1.45;
         }
 
-        /* PREMIUM EXECUTIVE DARK-EMERALD HEADER */
+        /* SITE-MATCHED CLEAN EXECUTIVE HEADER */
         .header {
-            background: linear-gradient(135deg, #071318 0%, #0d2229 100%);
+            background: linear-gradient(135deg, #081017 0%, #0c1822 100%);
             color: #ffffff;
             text-align: center;
-            padding: 26px 24px 22px 24px;
-            border-bottom: 3.5px solid #10b981;
+            padding: 24px 20px 20px 20px;
+            border-bottom: 2.5px solid #10b981;
         }
 
         .header h1 {
             margin-bottom: 4px;
-            font-size: 23px;
-            font-weight: 800;
+            font-size: 22px;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: #ffffff;
         }
 
         .header h2 {
-            margin-bottom: 12px;
-            font-size: 11.5px;
-            font-weight: 700;
-            color: #34d399;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-        }
-
-        .header .contact-row {
-            font-size: 10px;
-            color: #cbd5e1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 4px;
-            letter-spacing: 0.2px;
-        }
-
-        .header .contact-row span.bullet {
-            color: #10b981;
+            margin-bottom: 10px;
+            font-size: 12px;
             font-weight: bold;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
-        .header .contact-row a {
-            color: #38bdf8;
+        .header .contact-line {
+            font-size: 10.5px;
+            color: #cbd5e1;
+            margin-top: 3px;
+        }
+
+        .header .contact-line a {
+            color: #ffffff;
             text-decoration: underline;
-            text-underline-offset: 2px;
-            font-weight: 500;
+            font-weight: normal;
         }
 
         .content {
-            padding: 24px 38px 20px 38px;
+            padding: 24px 38px 15px 38px;
         }
 
         h3 {
-            font-size: 11.5px;
-            font-weight: 700;
+            font-size: 12.5px;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #0f172a;
-            border-bottom: 1px solid #cbd5e1;
-            padding-bottom: 3px;
-            margin-top: 18px;
+            letter-spacing: 0.5px;
+            color: #111111;
+            border-bottom: 1.5px solid #111111;
+            padding-bottom: 2px;
+            margin-top: 20px;
             margin-bottom: 8px;
         }
 
@@ -104,66 +91,56 @@
         p {
             margin-bottom: 8px;
             text-align: justify;
-            color: #334155;
+            color: #222222;
         }
 
         .grid-row {
             display: flex;
             margin-bottom: 5px;
-            font-size: 10.5px;
+            font-size: 11px;
         }
         
         .grid-title {
-            font-weight: 700;
-            color: #0f172a;
-            width: 165px;
+            font-weight: bold;
+            color: #111111;
+            width: 170px;
             flex-shrink: 0;
         }
 
         .grid-row div:last-child {
-            color: #334155;
+            color: #222222;
         }
 
         .flex-between {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            font-weight: 700;
-            color: #0f172a;
-            margin-top: 13px;
+            font-weight: bold;
+            color: #111111;
+            margin-top: 14px;
             margin-bottom: 4px;
-            font-size: 11px;
         }
         
-        .date-badge {
-            font-weight: 600;
-            font-size: 10px;
-            color: #64748b;
-        }
-
         .sub-header {
-            font-weight: 700;
-            color: #0f172a;
-            margin-top: 13px;
+            font-weight: bold;
+            color: #111111;
+            margin-top: 14px;
             margin-bottom: 4px;
-            font-size: 11px;
         }
 
         ul {
-            padding-left: 16px;
+            padding-left: 18px;
             margin-bottom: 8px;
         }
 
         li {
             margin-bottom: 5px;
             text-align: justify;
-            color: #334155;
-            line-height: 1.48;
+            color: #222222;
         }
 
         li strong {
-            color: #0f172a;
-            font-weight: 700;
+            color: #111111;
         }
 
         @media print {
@@ -187,17 +164,11 @@
     <div class="header">
         <h1>Furkan Süleyman Bozkurt</h1>
         <h2>Indie Game Developer & 3D Artist</h2>
-        <div class="contact-row">
-            <span>Balıkesir, Turkey</span>
-            <span class="bullet">•</span>
-            <span>+90 543 266 73 70</span>
-            <span class="bullet">•</span>
-            <span>furkansuleymancontact@gmail.com</span>
+        <div class="contact-line">
+            Balıkesir, Turkey &nbsp;|&nbsp; +90 543 266 73 70 &nbsp;|&nbsp; furkansuleymancontact@gmail.com
         </div>
-        <div class="contact-row" style="margin-top: 5px;">
-            <a href="https://linkedin.com/in/furkansuleymanbozkurt" target="_blank">linkedin.com/in/furkansuleymanbozkurt</a>
-            <span class="bullet">•</span>
-            <a href="https://furkanthedeveloper.github.io" target="_blank">furkanthedeveloper.github.io</a>
+        <div class="contact-line">
+            <a href="https://linkedin.com/in/furkansuleymanbozkurt" target="_blank">linkedin.com/in/furkansuleymanbozkurt</a> &nbsp;|&nbsp; <a href="https://furkanthedeveloper.github.io" target="_blank">https://furkanthedeveloper.github.io</a>
         </div>
     </div>
 
@@ -234,7 +205,7 @@
         
         <div class="flex-between">
             <div>Independent Game Developer (Solo Indie Dev) - PC & Steam</div>
-            <div class="date-badge">2022 - Present</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #555555;">2022 - Present</div>
         </div>
         <ul>
             <li><strong>MEDUSUS! (PC/Steam):</strong> Developed a playable demo featuring complex prop-hunt and asymmetrical hide-and-seek mechanics from scratch within an intensive 3-week period, set to participate with a playable demo in the upcoming <strong>Steam Next Fest (October 2026)</strong>. Built the core multiplayer foundation utilizing Unity Mirror.</li>
@@ -243,7 +214,7 @@
 
         <div class="flex-between">
             <div>Mobile Game Developer - Android & Google Play</div>
-            <div class="date-badge">2020 - 2022</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #555555;">2020 - 2022</div>
         </div>
         <ul>
             <li><strong>Stick Of Duty: Zombies:</strong> Programmed a 2D ragdoll action game and integrated an online multiplayer infrastructure utilizing international servers for real-time character synchronization.</li>
@@ -260,9 +231,9 @@
         <h3>Education</h3>
         <div class="flex-between">
             <div>European University of Lefke</div>
-            <div class="date-badge">Expected Graduation: 2027</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #555555;">Expected Graduation: 2027</div>
         </div>
-        <div style="font-style: italic; margin-bottom: 8px; color: #475569;">Bachelor's Degree in Digital Game Design | 3rd Year Student | CGPA: 3.67 / 4.00</div>
+        <div style="font-style: italic; margin-bottom: 8px; color: #444444;">Bachelor's Degree in Digital Game Design | 3rd Year Student | CGPA: 3.67 / 4.00</div>
 
         <!-- Languages -->
         <h3>Languages</h3>
