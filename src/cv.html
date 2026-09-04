@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Furkan Süleyman Bozkurt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        html {
+            background-color: #1e293b;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+        }
+
+        body {
+            width: 210mm;
+            height: 297mm;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+            color: #1e293b;
+            font-size: 11.5px;
+            line-height: 1.48;
+        }
+
+        /* SITE MATCHER HEADER - DARK ELEVATED INDIE DEV AESTHETIC */
+        .header {
+            background: linear-gradient(135deg, #06080d 0%, #0d131f 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 24px 20px 20px 20px;
+            border-bottom: 3px solid #10b981;
+            position: relative;
+        }
+
+        .header h1 {
+            margin-bottom: 4px;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .header h2 {
+            margin-bottom: 12px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header .contact-info {
+            font-size: 10.5px;
+            color: #cbd5e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .header .contact-info a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header .contact-info a.portfolio-link {
+            color: #34d399;
+            font-weight: 700;
+            background: rgba(16, 185, 129, 0.12);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .content {
+            padding: 22px 36px 15px 36px;
+        }
+
+        h3 {
+            font-size: 12.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0f172a;
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 2px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h3::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 12px;
+            background: #10b981;
+            border-radius: 2px;
+        }
+
+        .content > h3:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 8px;
+            text-align: justify;
+            color: #334155;
+        }
+
+        .grid-row {
+            display: flex;
+            margin-bottom: 5px;
+            font-size: 11px;
+        }
+        
+        .grid-title {
+            font-weight: 700;
+            color: #0f172a;
+            width: 170px;
+            flex-shrink: 0;
+        }
+
+        .grid-row div:last-child {
+            color: #334155;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .sub-header {
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 14px;
+            margin-bottom: 4px;
+        }
+
+        ul {
+            padding-left: 18px;
+            margin-bottom: 8px;
+        }
+
+        li {
+            margin-bottom: 5px;
+            text-align: justify;
+            color: #334155;
+        }
+
+        li strong {
+            color: #0f172a;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                background-color: white;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Furkan Süleyman Bozkurt</h1>
+        <h2>Indie Game Developer & 3D Artist</h2>
+        <div class="contact-info">
+            <span><i class="fa-solid fa-location-dot" style="color: #10b981;"></i> Balıkesir, Turkey</span>
+            <span><i class="fa-solid fa-phone" style="color: #10b981;"></i> +90 543 266 73 70</span>
+            <span><i class="fa-solid fa-envelope" style="color: #10b981;"></i> furkansuleymancontact@gmail.com</span>
+        </div>
+        <div class="contact-info" style="margin-top: 6px;">
+            <span><i class="fa-brands fa-linkedin" style="color: #38bdf8;"></i> linkedin.com/in/furkansuleymanbozkurt</span>
+            <span><i class="fa-solid fa-globe" style="color: #34d399;"></i> <a href="https://furkanthedeveloper.github.io" target="_blank" class="portfolio-link">https://furkanthedeveloper.github.io</a></span>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Professional Summary -->
+        <h3>Professional Summary</h3>
+        <p>3rd-year Digital Game Design student with hands-on experience in the complete solo development cycle, from prototyping to commercial Steam release. Specialized in Unity and C#, with a strong focus on multiplayer networking (Unity Mirror, Steam P2P) and 3D modeling. Proven ability to architect game mechanics, optimize systems, and successfully manage end-to-end product lifecycles as an independent developer.</p>
+
+        <!-- Technical Skills -->
+        <h3>Technical Skills</h3>
+        <div class="grid-row">
+            <div class="grid-title">Programming & Logic:</div>
+            <div>C#, Object-Oriented Programming, Gameplay Programming, AI Behaviors, Game Loop Optimization</div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-title">Engine & Tools:</div>
+            <div>Unity3D, Level Design, Rapid Prototyping, UI/UX Implementation</div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-title">Networking & Co-op:</div>
+            <div>Unity Mirror, Steam P2P, Multiplayer Synchronization</div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-title">Art & Audio:</div>
+            <div>Blender (3D Modeling, Texturing, Animation), 2D Asset Creation (Pixel Art), Audacity</div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-title">Publishing & SDKs:</div>
+            <div>Steamworks, Google Play Console, IAP Integration, Ad Networks</div>
+        </div>
+
+        <!-- Featured Projects and Experience -->
+        <h3>Featured Projects & Experience</h3>
+        
+        <div class="flex-between">
+            <div>Independent Game Developer (Solo Indie Dev) - PC & Steam</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #64748b;">2022 - Present</div>
+        </div>
+        <ul>
+            <li><strong>MEDUSUS! (PC/Steam):</strong> Developed a playable demo featuring complex prop-hunt and asymmetrical hide-and-seek mechanics from scratch within an intensive 3-week period, set to participate with a playable demo in the upcoming <strong>Steam Next Fest (October 2026)</strong>. Built the core multiplayer foundation utilizing Unity Mirror.</li>
+            <li><strong>Frick It (PC/Steam):</strong> Architected and developed 3D environments, character controllers, core survival mechanics, and a Steam P2P co-op network infrastructure entirely solo over 1.5 years, successfully launching the title commercially.</li>
+        </ul>
+
+        <div class="flex-between">
+            <div>Mobile Game Developer - Android & Google Play</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #64748b;">2020 - 2022</div>
+        </div>
+        <ul>
+            <li><strong>Stick Of Duty: Zombies:</strong> Programmed a 2D ragdoll action game and integrated an online multiplayer infrastructure utilizing international servers for real-time character synchronization.</li>
+            <li><strong>Hypercasual Portfolio (Right Ball, MyTeammates, etc.):</strong> Published multiple titles on the Google Play Store, managing their entire lifecycles by successfully integrating In-App Purchases (IAP) and advertising SDKs.</li>
+        </ul>
+
+        <div class="sub-header">Academic Projects & Game Jams</div>
+        <ul>
+            <li><strong>Albino And Curse:</strong> Designed and developed a 2D turn-based RPG featuring Undertale-style pixel-art combat mechanics from scratch within a few weeks for a university module, handling both programming and 2D asset creation.</li>
+            <li><strong>Game Jam Prototypes:</strong> Developed multiple rapid prototypes both individually and within teams under strict 48-72 hour deadlines, focusing on fast iteration, core mechanics implementation, and rapid problem-solving under pressure.</li>
+        </ul>
+
+        <!-- Education -->
+        <h3>Education</h3>
+        <div class="flex-between">
+            <div>European University of Lefke</div>
+            <div style="font-weight: normal; font-size: 10.5px; color: #64748b;">Expected Graduation: 2027</div>
+        </div>
+        <div style="font-style: italic; margin-bottom: 8px; color: #475569;">Bachelor's Degree in Digital Game Design | 3rd Year Student | CGPA: 3.67 / 4.00</div>
+
+        <!-- Languages -->
+        <h3>Languages</h3>
+        <div class="grid-row">
+            <div class="grid-title" style="width: 150px;">Turkish:</div>
+            <div>Native</div>
+        </div>
+        <div class="grid-row">
+            <div class="grid-title" style="width: 150px;">English:</div>
+            <div>Upper-Intermediate (Technical Working Proficiency)</div>
+        </div>
+    </div>
+
+</body>
+</html>
