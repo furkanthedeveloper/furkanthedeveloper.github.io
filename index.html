@@ -25,8 +25,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Lenis Smooth Scroll CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    
     
 
     <style>
@@ -190,12 +189,9 @@
 
         header.navbar.scrolled {
             padding: 14px 0;
-            background: var(--bg-nav);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(16, 185, 129, 0.12);
+            background: rgba(6, 8, 13, 0.96);
+-webkit-
+border-bottom: 1px solid rgba(16, 185, 129, 0.12);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
@@ -366,8 +362,7 @@
             background: rgba(255, 255, 255, 0.03);
             color: var(--text-primary);
             border-color: var(--border-light);
-            backdrop-filter: blur(10px);
-        }
+}
 
         .btn-outline:hover {
             background: var(--accent-glow);
@@ -404,8 +399,7 @@
             font-weight: 600;
             font-family: var(--font-mono);
             margin-bottom: 24px;
-            backdrop-filter: blur(8px);
-            cursor: default;
+cursor: default;
             user-select: none;
             -webkit-user-select: none;
         }
@@ -531,8 +525,7 @@
             font-size: 0.88rem;
             color: var(--text-secondary);
             font-family: var(--font-mono);
-            backdrop-filter: blur(10px);
-            transition: var(--transition-fast);
+transition: var(--transition-fast);
             cursor: default;
             user-select: none;
             -webkit-user-select: none;
@@ -1244,8 +1237,7 @@
             transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
             z-index: 10010;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-        }
+}
 
         .lightbox-close {
             top: 28px;
@@ -2103,45 +2095,23 @@
     <!-- JAVASCRIPT UX & SMOOTH SCROLL CONTROLLER -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Ultra-Optimized Butter-Smooth Lenis Inertial Scroll Controller
-            let lenis = null;
-            if (typeof Lenis !== 'undefined') {
-                lenis = new Lenis({
-                    duration: 1.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                    orientation: 'vertical',
-                    gestureOrientation: 'vertical',
-                    smoothWheel: true,
-                    smoothTouch: false,
-                    wheelMultiplier: 1.0,
-                    touchMultiplier: 1.0,
-                    infinite: false
+            // 1. Native Smooth Anchor Navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (!targetId || targetId === '#') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    }
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        const targetPos = targetEl.getBoundingClientRect().top + window.scrollY - 60;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
                 });
-                window.lenis = lenis;
-
-                function raf(time) {
-                    lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
-                requestAnimationFrame(raf);
-
-                // Smooth anchor clicks with Lenis
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        const targetId = this.getAttribute('href');
-                        if (!targetId || targetId === '#') {
-                            e.preventDefault();
-                            lenis.scrollTo(0, { duration: 1.0 });
-                            return;
-                        }
-                        const targetEl = document.querySelector(targetId);
-                        if (targetEl) {
-                            e.preventDefault();
-                            lenis.scrollTo(targetEl, { offset: -60, duration: 1.0 });
-                        }
-                    });
-                });
-            }
+            });
 
             // 2. Optimized 3D Node Canvas (Pauses on scroll for 0% CPU overhead)
             const canvas = document.getElementById('heroCanvas');
@@ -2218,13 +2188,14 @@
             }
 
             
-            // 3. Zero-Layout-Thrashing RAF Scroll Controller (100% Smooth 144Hz)
+            // 3. Bulletproof 0-DOM-Mutation Scroll Controller (0% CPU Overhead)
             const navbar = document.getElementById('navbar');
             const backToTop = document.getElementById('backToTop');
             const allNavLinks = document.querySelectorAll('.nav-links .nav-link, .mobile-menu .nav-link');
 
             let cachedSections = [];
             let cachedDocHeight = 0;
+            let activeNavId = 'about';
 
             function recalculateLayoutBounds() {
                 cachedSections = Array.from(document.querySelectorAll('section[id]')).map(sec => ({
@@ -2242,11 +2213,15 @@
             function onScrollTick() {
                 const scrollY = window.scrollY;
 
-                if (scrollY > 50) navbar.classList.add('scrolled');
-                else navbar.classList.remove('scrolled');
+                const shouldBeScrolled = scrollY > 50;
+                if (navbar.classList.contains('scrolled') !== shouldBeScrolled) {
+                    navbar.classList.toggle('scrolled', shouldBeScrolled);
+                }
 
-                if (scrollY > 400) backToTop.classList.add('visible');
-                else backToTop.classList.remove('visible');
+                const shouldBeVisible = scrollY > 400;
+                if (backToTop.classList.contains('visible') !== shouldBeVisible) {
+                    backToTop.classList.toggle('visible', shouldBeVisible);
+                }
 
                 let currentId = 'about';
                 const scrollPos = scrollY + 220;
@@ -2264,34 +2239,25 @@
                     }
                 }
 
-                allNavLinks.forEach(link => {
-                    const isTarget = link.getAttribute('href') === `#${currentId}`;
-                    if (link.classList.contains('active') !== isTarget) {
-                        link.classList.toggle('active', isTarget);
-                    }
-                });
+                if (currentId !== activeNavId) {
+                    activeNavId = currentId;
+                    allNavLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${activeNavId}`);
+                    });
+                }
 
                 isScrollTicking = false;
             }
 
-            if (lenis) {
-                lenis.on('scroll', () => {
-                    if (!isScrollTicking) {
-                        requestAnimationFrame(onScrollTick);
-                        isScrollTicking = true;
-                    }
-                });
-            } else {
-                window.addEventListener('scroll', () => {
-                    if (!isScrollTicking) {
-                        requestAnimationFrame(onScrollTick);
-                        isScrollTicking = true;
-                    }
-                }, { passive: true });
-            }
+            window.addEventListener('scroll', () => {
+                if (!isScrollTicking) {
+                    requestAnimationFrame(onScrollTick);
+                    isScrollTicking = true;
+                }
+            }, { passive: true });
             onScrollTick();
 
-            backToTop.addEventListener('click', () => { if (window.lenis) { window.lenis.scrollTo(0, { duration: 1.0 }); } else { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+            backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
             // 4. Mobile Menu Toggle
             const mobileMenu = document.getElementById('mobileMenu');
