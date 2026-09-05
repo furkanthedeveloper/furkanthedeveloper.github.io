@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Sleek SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='bgGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230d1926'/%3E%3Cstop offset='100%25' stop-color='%2306090e'/%3E%3C/linearGradient%3E%3ClinearGradient id='fGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2334d399'/%3E%3Cstop offset='50%25' stop-color='%2310b981'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23bgGrad)' stroke='%2310b981' stroke-width='2.5' stroke-opacity='0.6'/%3E%3Cpath d='M20 16 H44 V24 H28 V30 H40 V37 H28 V48 H20 Z' fill='url(%23fGrad)'/%3E%3C/svg%3E">
     <title>Furkan Süleyman Bozkurt | Indie Game Developer & 3D Artist</title>
     
     <!-- SEO Meta Tags -->
@@ -214,14 +216,13 @@
             width: 36px;
             height: 36px;
             border-radius: var(--radius-sm);
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            background: rgba(13, 25, 38, 0.9);
+            border: 1px solid rgba(16, 185, 129, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #000000;
-            font-weight: 900;
-            font-size: 1rem;
-            box-shadow: 0 0 12px var(--accent-glow);
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.25);
+            transition: var(--transition-fast);
         }
 
         .nav-links {
@@ -607,7 +608,7 @@
            ========================================================================== */
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 24px;
         }
 
         .section-tag {
@@ -634,7 +635,7 @@
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 55px;
+            margin-bottom: 24px;
         }
 
         .filter-btn {
@@ -909,15 +910,22 @@
            8. APP ICONS, SCREENSHOT GALLERIES & LIGHTBOX MODAL
            ========================================================================== */
         .game-icon-badge {
-            width: 46px;
-            height: 46px;
-            border-radius: var(--radius-sm);
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
             overflow: hidden;
             background: #090d16;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border: 1.5px solid rgba(16, 185, 129, 0.35);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 12px rgba(16, 185, 129, 0.15);
             flex-shrink: 0;
             display: inline-block;
+            transition: var(--transition-fast);
+        }
+
+        .game-icon-badge:hover {
+            transform: scale(1.06);
+            border-color: var(--accent-green-bright);
+            box-shadow: 0 0 18px rgba(52, 211, 153, 0.35);
         }
 
         .game-icon-badge img {
@@ -1145,12 +1153,14 @@
             align-items: center;
             justify-content: center;
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
-            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .lightbox-modal.active {
             opacity: 1;
+            visibility: visible;
             pointer-events: auto;
         }
 
@@ -1172,6 +1182,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transform: scale(0.92);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lightbox-modal.active .lightbox-container {
+            transform: scale(1);
         }
 
         .lightbox-img-frame {
@@ -1188,6 +1204,12 @@
             max-height: 78vh;
             object-fit: contain;
             display: block;
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .lightbox-img-frame img.changing {
+            opacity: 0.2;
+            transform: scale(0.98);
         }
 
         .lightbox-caption {
@@ -1452,6 +1474,40 @@
             }
             .copy-btn { width: 100%; justify-content: center; }
         }
+    
+        /* Performance & Layout Optimizations */
+        section, .steam-game-item, .mobile-featured-card, .mobile-card, .jam-card {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 500px;
+        }
+
+        .mobile-sub-grid .mobile-card {
+            padding: 22px;
+        }
+
+        .mobile-sub-grid .mobile-video-container {
+            max-height: 360px;
+            height: 360px;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 14px;
+            background: #04060a;
+        }
+
+        .mobile-sub-grid .mobile-video-container iframe {
+            width: 100%;
+            height: 100%;
+            max-width: 202px;
+            margin: 0 auto;
+        }
+
+        .thumbnails-row {
+            overscroll-behavior-x: contain;
+            overscroll-behavior-y: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -1467,7 +1523,7 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#" class="brand-logo">
-                <div class="avatar-box">F</div>
+                <div class="avatar-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="width: 22px; height: 22px;"><defs><linearGradient id="fGradNav" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34d399"/><stop offset="50%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><path d="M20 16 H44 V24 H28 V30 H40 V37 H28 V48 H20 Z" fill="url(#fGradNav)"/></svg></div>
                 <span>FURKAN</span>
             </a>
 
@@ -1605,7 +1661,7 @@
             <div class="steam-game-item reveal" id="project-frick-it">
                 <div class="game-media media-container-group">
                     <div class="media-display-box">
-                        <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA?vq=hd1080&rel=0&enablejsapi=1" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA?vq=hd1080&rel=0&enablejsapi=1" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy" decoding="async"></iframe>
                         <img class="active-screenshot" style="display: none;" src="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg" alt="Frick It Screenshot" onclick="openLightbox(['src/Frick%20It/adsw.jpg', 'src/Frick%20It/awdasd.jpg', 'src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg', 'src/Frick%20It/wadswa.jpg', 'src/Frick%20It/wasdw.jpg'], 2, 'Frick It Gameplay Screenshot')">
                     </div>
                     <div class="gallery-controls">
@@ -1614,11 +1670,11 @@
                             <button class="gallery-tab-btn tab-photos"><i class="fa-solid fa-images"></i> Photos (5)</button>
                         </div>
                         <div class="thumbnails-row">
-                            <button class="thumb-btn active" data-img="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg"><img src="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Frick%20It/adsw.jpg"><img src="src/Frick%20It/adsw.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Frick%20It/awdasd.jpg"><img src="src/Frick%20It/awdasd.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Frick%20It/wadswa.jpg"><img src="src/Frick%20It/wadswa.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Frick%20It/wasdw.jpg"><img src="src/Frick%20It/wasdw.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn active" data-img="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg"><img src="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/adsw.jpg"><img src="src/Frick%20It/adsw.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/awdasd.jpg"><img src="src/Frick%20It/awdasd.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/wadswa.jpg"><img src="src/Frick%20It/wadswa.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/wasdw.jpg"><img src="src/Frick%20It/wasdw.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
                         </div>
                     </div>
                 </div>
@@ -1656,7 +1712,7 @@
             <div class="steam-game-item reverse reveal" id="project-medusus">
                 <div class="game-media media-container-group">
                     <div class="media-display-box">
-                        <iframe src="https://www.youtube.com/embed/FsVtl8qrceY?vq=hd1080&rel=0&enablejsapi=1" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/FsVtl8qrceY?vq=hd1080&rel=0&enablejsapi=1" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy" decoding="async"></iframe>
                         <img class="active-screenshot" style="display: none;" src="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg" alt="MEDUSUS! Screenshot" onclick="openLightbox(['src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg', 'src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg', 'src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg', 'src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg', 'src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg', 'src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg', 'src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg'], 0, 'MEDUSUS! Gameplay Screenshot')">
                     </div>
                     <div class="gallery-controls">
@@ -1665,13 +1721,13 @@
                             <button class="gallery-tab-btn tab-photos"><i class="fa-solid fa-images"></i> Photos (7)</button>
                         </div>
                         <div class="thumbnails-row">
-                            <button class="thumb-btn active" data-img="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg"><img src="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg"><img src="src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg"><img src="src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg"><img src="src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg"><img src="src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg"><img src="src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg"><img src="src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn active" data-img="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg"><img src="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg"><img src="src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg"><img src="src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg"><img src="src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg"><img src="src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg"><img src="src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg"><img src="src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
                         </div>
                     </div>
                 </div>
@@ -1716,7 +1772,7 @@
             <div class="mobile-featured-card reveal">
                 <div class="game-media media-container-group">
                     <div class="media-display-box">
-                        <iframe src="https://www.youtube.com/embed/TR3kjxQ7eKs?vq=hd1080&rel=0&enablejsapi=1" title="Stick Of Duty Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/TR3kjxQ7eKs?vq=hd1080&rel=0&enablejsapi=1" title="Stick Of Duty Trailer" allowfullscreen loading="lazy" decoding="async"></iframe>
                         <img class="active-screenshot" style="display: none;" src="src/Stick%20Of%20Duty/unnamed.png" alt="Stick Of Duty Screenshot" onclick="openLightbox(['src/Stick%20Of%20Duty/unnamed.png', 'src/Stick%20Of%20Duty/unnamed%20(1).png', 'src/Stick%20Of%20Duty/unnamed%20(2).png', 'src/Stick%20Of%20Duty/unnamed%20(3).png', 'src/Stick%20Of%20Duty/unnamed%20(4).png', 'src/Stick%20Of%20Duty/unnamed%20(5).png', 'src/Stick%20Of%20Duty/unnamed%20(6).png', 'src/Stick%20Of%20Duty/unnamed%20(7).png'], 0, 'Stick Of Duty Gameplay Screenshot')">
                     </div>
                     <div class="gallery-controls">
@@ -1725,21 +1781,21 @@
                             <button class="gallery-tab-btn tab-photos"><i class="fa-solid fa-images"></i> Photos (8)</button>
                         </div>
                         <div class="thumbnails-row">
-                            <button class="thumb-btn active" data-img="src/Stick%20Of%20Duty/unnamed.png"><img src="src/Stick%20Of%20Duty/unnamed.png" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(1).png"><img src="src/Stick%20Of%20Duty/unnamed%20(1).png" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(2).png"><img src="src/Stick%20Of%20Duty/unnamed%20(2).png" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(3).png"><img src="src/Stick%20Of%20Duty/unnamed%20(3).png" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(4).png"><img src="src/Stick%20Of%20Duty/unnamed%20(4).png" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(5).png"><img src="src/Stick%20Of%20Duty/unnamed%20(5).png" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(6).png"><img src="src/Stick%20Of%20Duty/unnamed%20(6).png" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(7).png"><img src="src/Stick%20Of%20Duty/unnamed%20(7).png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn active" data-img="src/Stick%20Of%20Duty/unnamed.png"><img src="src/Stick%20Of%20Duty/unnamed.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(1).png"><img src="src/Stick%20Of%20Duty/unnamed%20(1).png" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(2).png"><img src="src/Stick%20Of%20Duty/unnamed%20(2).png" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(3).png"><img src="src/Stick%20Of%20Duty/unnamed%20(3).png" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(4).png"><img src="src/Stick%20Of%20Duty/unnamed%20(4).png" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(5).png"><img src="src/Stick%20Of%20Duty/unnamed%20(5).png" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(6).png"><img src="src/Stick%20Of%20Duty/unnamed%20(6).png" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(7).png"><img src="src/Stick%20Of%20Duty/unnamed%20(7).png" alt="Thumb" loading="lazy" decoding="async"></button>
                         </div>
                     </div>
                 </div>
                 <div class="game-info">
                     <div class="title-with-icon">
                         <div class="game-icon-badge">
-                            <img src="src/Stick%20Of%20Duty/icon.png" alt="Stick Of Duty Icon" loading="lazy">
+                            <img src="src/Stick%20Of%20Duty/icon.png" alt="Stick Of Duty Icon" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <h4 style="font-size: 1.6rem; margin-bottom: 2px;">Stick Of Duty: Zombies</h4>
@@ -1762,7 +1818,7 @@
                 <div class="mobile-card reveal">
                     <div class="title-with-icon" style="margin-bottom: 14px;">
                         <div class="game-icon-badge">
-                            <img src="src/Right%20Ball/icon.png" alt="Right Ball Icon" loading="lazy">
+                            <img src="src/Right%20Ball/icon.png" alt="Right Ball Icon" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <h4 style="font-size: 1.35rem; margin-bottom: 2px;">Right Ball</h4>
@@ -1774,14 +1830,14 @@
                     </div>
                     <div class="media-container-group">
                         <div class="mobile-video-container" style="position: relative;">
-                            <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs?vq=hd1080&rel=0&enablejsapi=1" title="Right Ball Trailer" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs?vq=hd1080&rel=0&enablejsapi=1" title="Right Ball Trailer" allowfullscreen loading="lazy" decoding="async"></iframe>
                         </div>
                         <div class="thumbnails-row" style="margin-top: 10px;">
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 0, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 1, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(1).jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 2, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(2).jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 3, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(3).jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 4, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(4).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 0, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 1, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(1).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 2, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(2).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 3, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(3).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 4, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(4).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
                         </div>
                     </div>
                     <p style="margin-top: 14px;">An addictive hypercasual title focused on retention and smooth physics mechanics, integrated with Yodo1 MAS SDK mediation.</p>
@@ -1791,7 +1847,7 @@
                 <div class="mobile-card reveal">
                     <div class="title-with-icon" style="margin-bottom: 14px;">
                         <div class="game-icon-badge">
-                            <img src="src/My%20Teammates/icon.png" alt="MyTeammates Icon" loading="lazy">
+                            <img src="src/My%20Teammates/icon.png" alt="MyTeammates Icon" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <h4 style="font-size: 1.35rem; margin-bottom: 2px;">MyTeammates</h4>
@@ -1803,14 +1859,14 @@
                     </div>
                     <div class="media-container-group">
                         <div class="mobile-video-container" style="position: relative;">
-                            <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0?vq=hd1080&rel=0&enablejsapi=1" title="MyTeammates Trailer" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0?vq=hd1080&rel=0&enablejsapi=1" title="MyTeammates Trailer" allowfullscreen loading="lazy" decoding="async"></iframe>
                         </div>
                         <div class="thumbnails-row" style="margin-top: 10px;">
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 0, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed.jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 1, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(1).jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 2, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(2).jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 3, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(3).jpg" alt="Thumb" loading="lazy"></button>
-                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 4, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(4).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 0, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 1, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(1).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 2, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(2).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 3, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(3).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 4, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(4).jpg" alt="Thumb" loading="lazy" decoding="async"></button>
                         </div>
                     </div>
                     <p style="margin-top: 14px;">A reflex-based mobile title featuring competitive elements and global scoreboards.</p>
@@ -1830,7 +1886,7 @@
                 <div class="jam-card reveal">
                     <div class="title-with-icon">
                         <div class="game-icon-badge">
-                            <img src="src/Albino%20And%20Curse/icon.png" alt="Albino And Curse Icon" loading="lazy">
+                            <img src="src/Albino%20And%20Curse/icon.png" alt="Albino And Curse Icon" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <h4 style="font-size: 1.35rem; margin-bottom: 2px;">Albino And Curse</h4>
@@ -1841,13 +1897,13 @@
                         </div>
                     </div>
                     <div class="jam-media-box" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 0, 'Albino And Curse Gameplay')">
-                        <img src="src/Albino%20And%20Curse/O9E45d.png" alt="Albino And Curse Preview" loading="lazy">
+                        <img src="src/Albino%20And%20Curse/O9E45d.png" alt="Albino And Curse Preview" loading="lazy" decoding="async">
                     </div>
                     <div class="thumbnails-row" style="margin-bottom: 12px;">
-                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 0, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/O9E45d.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 1, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/ZF5zp8.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 2, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/k%2BPieh.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 3, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/lkHnfR.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 0, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/O9E45d.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 1, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/ZF5zp8.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 2, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/k%2BPieh.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 3, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/lkHnfR.png" alt="Thumb" loading="lazy" decoding="async"></button>
                     </div>
                     <p>Solo-programmed and designed for a university module (2-person team). Handled all programming, systems, and combat art while collaborating on general 2D sprites.</p>
                     <a href="https://bruhfurki.itch.io/albino-and-curse" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem;">
@@ -1859,7 +1915,7 @@
                 <div class="jam-card reveal">
                     <div class="title-with-icon">
                         <div class="game-icon-badge">
-                            <img src="src/The%20Amber%20Path/icon.png" alt="The Amber Path Icon" loading="lazy">
+                            <img src="src/The%20Amber%20Path/icon.png" alt="The Amber Path Icon" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <h4 style="font-size: 1.35rem; margin-bottom: 2px;">The Amber Path</h4>
@@ -1870,13 +1926,13 @@
                         </div>
                     </div>
                     <div class="jam-media-box" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 0, 'The Amber Path Gameplay')">
-                        <img src="src/The%20Amber%20Path/1767101928367.jpg" alt="The Amber Path Preview" loading="lazy">
+                        <img src="src/The%20Amber%20Path/1767101928367.jpg" alt="The Amber Path Preview" loading="lazy" decoding="async">
                     </div>
                     <div class="thumbnails-row" style="margin-bottom: 12px;">
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 0, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101928367.jpg" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 1, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101930044.jpg" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 2, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101931323.jpg" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 3, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101931326.jpg" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 0, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101928367.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 1, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101930044.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 2, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101931323.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 3, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101931326.jpg" alt="Thumb" loading="lazy" decoding="async"></button>
                     </div>
                     <p>A 2D narrative-puzzle jam game created under strict 48-hour constraints (2-person team). Spearheaded 100% of programming, puzzle logic, and interaction triggers.</p>
                     <a href="https://bruhfurki.itch.io/the-amber-path" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem;">
@@ -1888,7 +1944,7 @@
                 <div class="jam-card reveal">
                     <div class="title-with-icon">
                         <div class="game-icon-badge">
-                            <img src="src/The%20Mindbreak/icon.png" alt="The Mindbreak Icon" loading="lazy">
+                            <img src="src/The%20Mindbreak/icon.png" alt="The Mindbreak Icon" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <h4 style="font-size: 1.35rem; margin-bottom: 2px;">The Mindbreak</h4>
@@ -1899,13 +1955,13 @@
                         </div>
                     </div>
                     <div class="jam-media-box" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 0, 'The Mindbreak Gameplay')">
-                        <img src="src/The%20Mindbreak/9LcQxaZdnS-1766327054.png" alt="The Mindbreak Preview" loading="lazy">
+                        <img src="src/The%20Mindbreak/9LcQxaZdnS-1766327054.png" alt="The Mindbreak Preview" loading="lazy" decoding="async">
                     </div>
                     <div class="thumbnails-row" style="margin-bottom: 12px;">
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 0, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/9LcQxaZdnS-1766327054.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 1, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 2, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/rWAE3sY7BK-1766327054.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 3, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/tOv0UdyX6r-1766327054.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 0, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/9LcQxaZdnS-1766327054.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 1, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 2, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/rWAE3sY7BK-1766327054.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 3, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/tOv0UdyX6r-1766327054.png" alt="Thumb" loading="lazy" decoding="async"></button>
                     </div>
                     <p>Led a 4-person team in a high-stakes Game Jam; spearheaded core game design, architectural logic, and gameplay programming while delegating audio and visual pipelines.</p>
                     <a href="https://fiuby.com/games/the-mindbreak" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem;">
@@ -1917,7 +1973,7 @@
                 <div class="jam-card reveal">
                     <div class="title-with-icon">
                         <div class="game-icon-badge">
-                            <img src="src/The%20Basement/icon.png" alt="The Basement Icon" loading="lazy">
+                            <img src="src/The%20Basement/icon.png" alt="The Basement Icon" loading="lazy" decoding="async">
                         </div>
                         <div>
                             <h4 style="font-size: 1.35rem; margin-bottom: 2px;">The Basement</h4>
@@ -1928,15 +1984,18 @@
                         </div>
                     </div>
                     <div class="jam-media-box" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 0, 'The Basement Gameplay')">
-                        <img src="src/The%20Basement/33NPjU.png" alt="The Basement Preview" loading="lazy">
+                        <img src="src/The%20Basement/33NPjU.png" alt="The Basement Preview" loading="lazy" decoding="async">
                     </div>
                     <div class="thumbnails-row" style="margin-bottom: 12px;">
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 0, 'The Basement Gameplay')"><img src="src/The%20Basement/33NPjU.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 1, 'The Basement Gameplay')"><img src="src/The%20Basement/7U7lmw.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 2, 'The Basement Gameplay')"><img src="src/The%20Basement/SUSUx2.png" alt="Thumb" loading="lazy"></button>
-                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 3, 'The Basement Gameplay')"><img src="src/The%20Basement/fOjSrX.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 0, 'The Basement Gameplay')"><img src="src/The%20Basement/33NPjU.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 1, 'The Basement Gameplay')"><img src="src/The%20Basement/7U7lmw.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 2, 'The Basement Gameplay')"><img src="src/The%20Basement/SUSUx2.png" alt="Thumb" loading="lazy" decoding="async"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 3, 'The Basement Gameplay')"><img src="src/The%20Basement/fOjSrX.png" alt="Thumb" loading="lazy" decoding="async"></button>
                     </div>
                     <p>Created an early-stage solo jam prototype focusing on atmospheric tension, rapid modular level design, and fast state-machine programming under tight time constraints.</p>
+                    <a href="https://bruhfurki.itch.io/the-basement" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem;">
+                        <i class="fa-brands fa-itch-io"></i> Play on Itch.io <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1991,7 +2050,7 @@
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
             <div class="lightbox-img-frame">
-                <img src="" alt="Fullscreen Gameplay Preview" id="lightboxImg" loading="lazy" decoding="async">
+                <img src="" alt="Fullscreen Gameplay Preview" id="lightboxImg" loading="lazy" decoding="async" decoding="async">
             </div>
             <div class="lightbox-caption" id="lightboxCaption"></div>
             <button class="lightbox-btn lightbox-next" id="lightboxNext" aria-label="Next Image">
@@ -2140,6 +2199,49 @@
                 animateCanvas();
             }
 
+            
+            // Active Nav Link Scroll Observer
+            const navSections = document.querySelectorAll('section[id]');
+            const allNavLinks = document.querySelectorAll('.nav-links .nav-link, .mobile-menu .nav-link');
+
+            function updateActiveNav() {
+                let currentId = 'about';
+                const scrollPos = window.scrollY + 200;
+
+                navSections.forEach(section => {
+                    const top = section.offsetTop;
+                    const height = section.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        currentId = section.getAttribute('id');
+                    }
+                });
+
+                allNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            if (lenis) {
+                lenis.on('scroll', updateActiveNav);
+            } else {
+                window.addEventListener('scroll', updateActiveNav, { passive: true });
+            }
+            updateActiveNav();
+
+            // Smooth hover scroll pass-through for horizontal thumbnail strips
+            document.querySelectorAll('.thumbnails-row').forEach(strip => {
+                strip.addEventListener('wheel', (e) => {
+                    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                        if (window.lenis) {
+                            window.lenis.scrollTo(window.scrollY + e.deltaY * 2.2, { immediate: true });
+                        }
+                    }
+                }, { passive: true });
+            });
+
             // 3. Sticky Navbar & Back-to-Top Listener (Lenis Event Synced)
             const navbar = document.getElementById('navbar');
             const backToTop = document.getElementById('backToTop');
@@ -2266,7 +2368,11 @@
 
             function updateLightboxImage(captionText) {
                 if (!lightboxImg) return;
-                lightboxImg.src = currentGalleryImages[currentImageIndex];
+                lightboxImg.classList.add('changing');
+                setTimeout(() => {
+                    lightboxImg.src = currentGalleryImages[currentImageIndex];
+                    lightboxImg.classList.remove('changing');
+                }, 70);
                 if (captionText && lightboxCaption) {
                     lightboxCaption.textContent = `${captionText} (${currentImageIndex + 1}/${currentGalleryImages.length})`;
                     lightboxCaption.style.display = 'block';
