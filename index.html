@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Lenis Smooth Scroll CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     
 
     <style>
@@ -2102,23 +2103,45 @@
     <!-- JAVASCRIPT UX & SMOOTH SCROLL CONTROLLER -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Native 144Hz GPU Smooth Scroll Controller (0ms Input Lag)
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if (!targetId || targetId === '#') {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return;
-                    }
-                    const targetEl = document.querySelector(targetId);
-                    if (targetEl) {
-                        e.preventDefault();
-                        const targetPos = targetEl.getBoundingClientRect().top + window.scrollY - 60;
-                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-                    }
+            // 1. Ultra-Optimized Butter-Smooth Lenis Inertial Scroll Controller
+            let lenis = null;
+            if (typeof Lenis !== 'undefined') {
+                lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    orientation: 'vertical',
+                    gestureOrientation: 'vertical',
+                    smoothWheel: true,
+                    smoothTouch: false,
+                    wheelMultiplier: 1.0,
+                    touchMultiplier: 1.0,
+                    infinite: false
                 });
-            });
+                window.lenis = lenis;
+
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+
+                // Smooth anchor clicks with Lenis
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        const targetId = this.getAttribute('href');
+                        if (!targetId || targetId === '#') {
+                            e.preventDefault();
+                            lenis.scrollTo(0, { duration: 1.0 });
+                            return;
+                        }
+                        const targetEl = document.querySelector(targetId);
+                        if (targetEl) {
+                            e.preventDefault();
+                            lenis.scrollTo(targetEl, { offset: -60, duration: 1.0 });
+                        }
+                    });
+                });
+            }
 
             // 2. Optimized 3D Node Canvas (Pauses on scroll for 0% CPU overhead)
             const canvas = document.getElementById('heroCanvas');
@@ -2251,15 +2274,24 @@
                 isScrollTicking = false;
             }
 
-            window.addEventListener('scroll', () => {
-                if (!isScrollTicking) {
-                    requestAnimationFrame(onScrollTick);
-                    isScrollTicking = true;
-                }
-            }, { passive: true });
+            if (lenis) {
+                lenis.on('scroll', () => {
+                    if (!isScrollTicking) {
+                        requestAnimationFrame(onScrollTick);
+                        isScrollTicking = true;
+                    }
+                });
+            } else {
+                window.addEventListener('scroll', () => {
+                    if (!isScrollTicking) {
+                        requestAnimationFrame(onScrollTick);
+                        isScrollTicking = true;
+                    }
+                }, { passive: true });
+            }
             onScrollTick();
 
-            backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            backToTop.addEventListener('click', () => { if (window.lenis) { window.lenis.scrollTo(0, { duration: 1.0 }); } else { window.scrollTo({ top: 0, behavior: 'smooth' }); } });
 
             // 4. Mobile Menu Toggle
             const mobileMenu = document.getElementById('mobileMenu');
