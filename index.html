@@ -649,7 +649,7 @@
             display: grid;
             grid-template-columns: 1.55fr 1fr;
             gap: 44px;
-            align-items: stretch;
+            align-items: start;
             margin-bottom: 90px;
             padding: 24px 0 60px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -702,8 +702,6 @@
 
         .game-media {
             width: 100%;
-            height: 100%;
-            display: flex;
             position: relative;
             z-index: 1;
         }
@@ -711,10 +709,9 @@
         .video-container {
             position: relative;
             width: 100%;
-            height: 100%;
-            min-height: 100%;
-            padding-bottom: 0;
-            flex: 1;
+            aspect-ratio: 16 / 9;
+            padding-bottom: 56.25%; /* Strict 16:9 Aspect Ratio */
+            height: 0;
             border-radius: var(--radius-md);
             overflow: hidden;
             background: #000000;
@@ -854,7 +851,8 @@
         .mobile-video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 177.77%; /* 9:16 Aspect Ratio */
+            aspect-ratio: 9 / 16;
+            padding-bottom: 177.77%; /* Strict 9:16 Aspect Ratio */
             height: 0;
             border-radius: var(--radius-sm);
             overflow: hidden;
@@ -1287,7 +1285,7 @@
             <div class="steam-game-item reveal" id="project-frick-it">
                 <div class="game-media">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA?vq=hd1080&rel=0&enablejsapi=1" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
                 <div class="game-info">
@@ -1324,7 +1322,7 @@
             <div class="steam-game-item reverse reveal" id="project-medusus">
                 <div class="game-media">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/FsVtl8qrceY" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/FsVtl8qrceY?vq=hd1080&rel=0&enablejsapi=1" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
                 <div class="game-info">
@@ -1368,7 +1366,7 @@
                 <!-- Mobile 1: Stick Of Duty -->
                 <div class="mobile-card reveal">
                     <div class="mobile-video-container">
-                        <iframe src="https://www.youtube.com/embed/TR3kjxQ7eKs" title="Stick Of Duty Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/TR3kjxQ7eKs?vq=hd1080&rel=0&enablejsapi=1" title="Stick Of Duty Trailer" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h4>Stick Of Duty: Zombies</h4>
                     <div class="tags-list" style="margin-bottom: 12px;">
@@ -1381,7 +1379,7 @@
                 <!-- Mobile 2: Right Ball -->
                 <div class="mobile-card reveal">
                     <div class="mobile-video-container">
-                        <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs" title="Right Ball Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs?vq=hd1080&rel=0&enablejsapi=1" title="Right Ball Trailer" allowfullscreen loading="lazy">
                     </div>
                     <h4>Right Ball</h4>
                     <div class="tags-list" style="margin-bottom: 12px;">
@@ -1394,7 +1392,7 @@
                 <!-- Mobile 3: MyTeammates -->
                 <div class="mobile-card reveal">
                     <div class="mobile-video-container">
-                        <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0" title="MyTeammates Trailer" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0?vq=hd1080&rel=0&enablejsapi=1" title="MyTeammates Trailer" allowfullscreen loading="lazy"></iframe>
                     </div>
                     <h4>MyTeammates</h4>
                     <div class="tags-list" style="margin-bottom: 12px;">
