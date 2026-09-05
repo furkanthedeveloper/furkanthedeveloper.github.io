@@ -81,7 +81,7 @@
         }
 
         .lenis.lenis-stopped {
-            overflow: hidden;
+            /* Keep scrollbar unlocked */
         }
 
         /* Reset & Base Setup */
@@ -1544,6 +1544,29 @@
                     requestAnimationFrame(raf);
                 }
                 requestAnimationFrame(raf);
+
+                // Seamlessly handle native scrollbar thumb dragging
+                let isDraggingScrollbar = false;
+
+                window.addEventListener('pointerdown', (e) => {
+                    if (e.clientX >= document.documentElement.clientWidth - 20) {
+                        isDraggingScrollbar = true;
+                        if (lenis) lenis.stop();
+                    }
+                }, { passive: true });
+
+                const handleScrollbarDragEnd = () => {
+                    if (isDraggingScrollbar) {
+                        isDraggingScrollbar = false;
+                        if (lenis) {
+                            lenis.start();
+                            lenis.scrollTo(window.scrollY, { immediate: true });
+                        }
+                    }
+                };
+
+                window.addEventListener('pointerup', handleScrollbarDragEnd, { passive: true });
+                window.addEventListener('mouseup', handleScrollbarDragEnd, { passive: true });
 
                 // Smooth scroll to anchors with Lenis
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
