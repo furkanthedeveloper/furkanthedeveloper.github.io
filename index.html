@@ -906,11 +906,168 @@
         }
 
         /* ==========================================================================
-           8. ACADEMIC & GAME JAMS SECTION
+           8. APP ICONS, SCREENSHOT GALLERIES & LIGHTBOX MODAL
            ========================================================================== */
+        .game-icon-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: #090d16;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        .game-icon-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .title-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        /* Interactive Gallery Switcher & Media Display */
+        .media-container-group {
+            width: 100%;
+        }
+
+        .media-display-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #000000;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: var(--transition-smooth);
+        }
+
+        .media-display-box iframe,
+        .media-display-box img.active-screenshot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+
+        .media-display-box img.active-screenshot {
+            cursor: zoom-in;
+        }
+
+        .gallery-controls {
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .gallery-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-tab-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .gallery-tab-btn:hover, .gallery-tab-btn.active {
+            background: var(--accent-green);
+            color: #ffffff;
+            border-color: var(--accent-green-bright);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .thumbnails-row {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 4px 2px 8px 2px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-green) transparent;
+        }
+
+        .thumb-btn {
+            width: 78px;
+            height: 48px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1.5px solid var(--border-light);
+            cursor: pointer;
+            flex-shrink: 0;
+            background: #000000;
+            transition: var(--transition-fast);
+            padding: 0;
+        }
+
+        .thumb-btn:hover, .thumb-btn.active {
+            border-color: var(--accent-green-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .thumb-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .thumb-btn.portrait {
+            width: 44px;
+            height: 70px;
+        }
+
+        /* Mobile Portfolio Re-layout */
+        .mobile-featured-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            backdrop-filter: blur(16px);
+            margin-bottom: 32px;
+            transition: var(--transition-smooth);
+            display: grid;
+            grid-template-columns: 1.55fr 1fr;
+            gap: 36px;
+            align-items: start;
+        }
+
+        .mobile-featured-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-sub-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        /* Academic & Game Jams Layout */
         .jam-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 32px;
         }
 
@@ -919,12 +1076,14 @@
             border: 1px solid var(--border-light);
             border-left: 4px solid var(--accent-green);
             border-radius: var(--radius-md);
-            padding: 30px;
+            padding: 28px;
             backdrop-filter: blur(16px);
             transition: var(--transition-smooth);
             cursor: default;
             user-select: none;
             -webkit-user-select: none;
+            display: flex;
+            flex-direction: column;
         }
 
         .jam-card:hover {
@@ -935,18 +1094,160 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
+        .jam-card .jam-media-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: #000000;
+            margin-bottom: 14px;
+            border: 1px solid var(--border-light);
+            cursor: zoom-in;
+        }
+
+        .jam-card .jam-media-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition-smooth);
+        }
+
+        .jam-card .jam-media-box:hover img {
+            transform: scale(1.05);
+        }
+
         .jam-card h4 {
             font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .jam-card p {
             color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        /* Lightbox Fullscreen Modal */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 6, 10, 0.94);
+            backdrop-filter: blur(20px);
+        }
+
+        .lightbox-container {
+            position: relative;
+            z-index: 10;
+            max-width: 92vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-img-frame {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(16, 185, 129, 0.25);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            background: #000000;
+        }
+
+        .lightbox-img-frame img {
+            max-width: 88vw;
+            max-height: 78vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .lightbox-caption {
+            margin-top: 14px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--accent-green-bright);
+            background: rgba(13, 19, 32, 0.85);
+            padding: 6px 20px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            background: rgba(13, 19, 32, 0.85);
+            border: 1px solid var(--border-light);
+            color: #ffffff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: var(--transition-fast);
+            z-index: 20;
+        }
+
+        .lightbox-btn:hover {
+            background: var(--accent-green);
+            color: #ffffff;
+            border-color: var(--accent-green-bright);
+            transform: scale(1.1);
+        }
+
+        .lightbox-close {
+            top: -55px;
+            right: 0;
+        }
+
+        .lightbox-prev {
+            left: -65px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            right: -65px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 900px) {
+            .mobile-featured-card { grid-template-columns: 1fr; }
+            .mobile-sub-grid, .jam-grid { grid-template-columns: 1fr; }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+            .lightbox-close { top: 10px; right: 10px; }
         }
 
         /* ==========================================================================
@@ -1173,7 +1474,7 @@
             <nav class="nav-links">
                 <a href="#about" class="nav-link active">About</a>
                 <a href="#steam-games" class="nav-link">Steam Games</a>
-                <a href="#mobile-games" class="nav-link">Mobile</a>
+                <a href="#mobile-games" class="nav-link">Mobile Games</a>
                 <a href="#academic-jams" class="nav-link">Jams & Academic</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
@@ -1300,11 +1601,25 @@
                 <h2 class="section-title">Commercial Steam Titles</h2>
             </div>
 
-            <!-- Project 1: Frick It (Video Left, Info Right) -->
+            <!-- Project 1: Frick It (Video & Screenshot Gallery) -->
             <div class="steam-game-item reveal" id="project-frick-it">
-                <div class="game-media">
-                    <div class="video-container">
+                <div class="game-media media-container-group">
+                    <div class="media-display-box">
                         <iframe src="https://www.youtube.com/embed/6n2dgl4cLOA?vq=hd1080&rel=0&enablejsapi=1" title="Frick It Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                        <img class="active-screenshot" style="display: none;" src="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg" alt="Frick It Screenshot" onclick="openLightbox(['src/Frick%20It/adsw.jpg', 'src/Frick%20It/awdasd.jpg', 'src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg', 'src/Frick%20It/wadswa.jpg', 'src/Frick%20It/wasdw.jpg'], 2, 'Frick It Gameplay Screenshot')">
+                    </div>
+                    <div class="gallery-controls">
+                        <div class="gallery-tabs">
+                            <button class="gallery-tab-btn tab-trailer active"><i class="fa-solid fa-play"></i> Trailer</button>
+                            <button class="gallery-tab-btn tab-photos"><i class="fa-solid fa-images"></i> Photos (5)</button>
+                        </div>
+                        <div class="thumbnails-row">
+                            <button class="thumb-btn active" data-img="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg"><img src="src/Frick%20It/ss_17a6dda8f915fc0714463949fb992c2c1a42dd00.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/adsw.jpg"><img src="src/Frick%20It/adsw.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/awdasd.jpg"><img src="src/Frick%20It/awdasd.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/wadswa.jpg"><img src="src/Frick%20It/wadswa.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Frick%20It/wasdw.jpg"><img src="src/Frick%20It/wasdw.jpg" alt="Thumb" loading="lazy"></button>
+                        </div>
                     </div>
                 </div>
                 <div class="game-info">
@@ -1337,11 +1652,27 @@
                 </div>
             </div>
 
-            <!-- Project 2: Medusus! (Info Left, Video Right - Reverse Zig-Zag Layout) -->
+            <!-- Project 2: Medusus! (Video & Screenshot Gallery) -->
             <div class="steam-game-item reverse reveal" id="project-medusus">
-                <div class="game-media">
-                    <div class="video-container">
+                <div class="game-media media-container-group">
+                    <div class="media-display-box">
                         <iframe src="https://www.youtube.com/embed/FsVtl8qrceY?vq=hd1080&rel=0&enablejsapi=1" title="Medusus! Gameplay Trailer" allowfullscreen loading="lazy"></iframe>
+                        <img class="active-screenshot" style="display: none;" src="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg" alt="MEDUSUS! Screenshot" onclick="openLightbox(['src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg', 'src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg', 'src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg', 'src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg', 'src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg', 'src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg', 'src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg'], 0, 'MEDUSUS! Gameplay Screenshot')">
+                    </div>
+                    <div class="gallery-controls">
+                        <div class="gallery-tabs">
+                            <button class="gallery-tab-btn tab-trailer active"><i class="fa-solid fa-play"></i> Trailer</button>
+                            <button class="gallery-tab-btn tab-photos"><i class="fa-solid fa-images"></i> Photos (7)</button>
+                        </div>
+                        <div class="thumbnails-row">
+                            <button class="thumb-btn active" data-img="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg"><img src="src/MEDUSUS!/ss_12cda59b502a40b2e04a87ed3c50d36b142ec1ba.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg"><img src="src/MEDUSUS!/ss_314346af4d460bef82a41c5b07447705eb516dae.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg"><img src="src/MEDUSUS!/ss_5b03feafc78f52e7248d5c2d5299792b88230beb.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg"><img src="src/MEDUSUS!/ss_9dd4a087cec8670a437951b3d2e388073d16d4bb.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg"><img src="src/MEDUSUS!/ss_c2a69f67cfd8fcd3426e49c9515fa9167e2baf4c.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg"><img src="src/MEDUSUS!/ss_e8782637cead717b9bebdb4af963adda49cf1ce6.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg"><img src="src/MEDUSUS!/ss_f756f9ec6dfab3b4fd0ef731b8cd1830253d6fa2.1920x1080.jpg" alt="Thumb" loading="lazy"></button>
+                        </div>
                     </div>
                 </div>
                 <div class="game-info">
@@ -1381,44 +1712,108 @@
                 <h2 class="section-title">Mobile Portfolio</h2>
             </div>
 
-            <div class="mobile-grid">
-                <!-- Mobile 1: Stick Of Duty -->
-                <div class="mobile-card reveal">
-                    <div class="mobile-video-container">
+            <!-- Featured Horizontal Mobile Game: Stick Of Duty -->
+            <div class="mobile-featured-card reveal">
+                <div class="game-media media-container-group">
+                    <div class="media-display-box">
                         <iframe src="https://www.youtube.com/embed/TR3kjxQ7eKs?vq=hd1080&rel=0&enablejsapi=1" title="Stick Of Duty Trailer" allowfullscreen loading="lazy"></iframe>
+                        <img class="active-screenshot" style="display: none;" src="src/Stick%20Of%20Duty/unnamed.png" alt="Stick Of Duty Screenshot" onclick="openLightbox(['src/Stick%20Of%20Duty/unnamed.png', 'src/Stick%20Of%20Duty/unnamed%20(1).png', 'src/Stick%20Of%20Duty/unnamed%20(2).png', 'src/Stick%20Of%20Duty/unnamed%20(3).png', 'src/Stick%20Of%20Duty/unnamed%20(4).png', 'src/Stick%20Of%20Duty/unnamed%20(5).png', 'src/Stick%20Of%20Duty/unnamed%20(6).png', 'src/Stick%20Of%20Duty/unnamed%20(7).png'], 0, 'Stick Of Duty Gameplay Screenshot')">
                     </div>
-                    <h4>Stick Of Duty: Zombies</h4>
-                    <div class="tags-list" style="margin-bottom: 12px;">
-                        <span class="tag-chip">2D CoD Zombies</span>
-                        <span class="tag-chip">Dedicated Server</span>
+                    <div class="gallery-controls">
+                        <div class="gallery-tabs">
+                            <button class="gallery-tab-btn tab-trailer active"><i class="fa-solid fa-play"></i> Trailer</button>
+                            <button class="gallery-tab-btn tab-photos"><i class="fa-solid fa-images"></i> Photos (8)</button>
+                        </div>
+                        <div class="thumbnails-row">
+                            <button class="thumb-btn active" data-img="src/Stick%20Of%20Duty/unnamed.png"><img src="src/Stick%20Of%20Duty/unnamed.png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(1).png"><img src="src/Stick%20Of%20Duty/unnamed%20(1).png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(2).png"><img src="src/Stick%20Of%20Duty/unnamed%20(2).png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(3).png"><img src="src/Stick%20Of%20Duty/unnamed%20(3).png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(4).png"><img src="src/Stick%20Of%20Duty/unnamed%20(4).png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(5).png"><img src="src/Stick%20Of%20Duty/unnamed%20(5).png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(6).png"><img src="src/Stick%20Of%20Duty/unnamed%20(6).png" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn" data-img="src/Stick%20Of%20Duty/unnamed%20(7).png"><img src="src/Stick%20Of%20Duty/unnamed%20(7).png" alt="Thumb" loading="lazy"></button>
+                        </div>
                     </div>
-                    <p>A 2D Call of Duty: Zombies-inspired action game; started single-player and expanded to multiplayer networking via external servers due to high player demand.</p>
                 </div>
+                <div class="game-info">
+                    <div class="title-with-icon">
+                        <div class="game-icon-badge">
+                            <img src="src/Stick%20Of%20Duty/icon.png" alt="Stick Of Duty Icon" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.6rem; margin-bottom: 2px;">Stick Of Duty: Zombies</h4>
+                            <div class="tags-list">
+                                <span class="tag-chip">2D CoD Zombies</span>
+                                <span class="tag-chip">Dedicated Server</span>
+                                <span class="tag-chip">Horizontal Gameplay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="game-summary">
+                        A 2D Call of Duty: Zombies-inspired action title. Initially launched as single-player and expanded to multiplayer networking with external servers due to high community demand.
+                    </p>
+                </div>
+            </div>
 
+            <!-- Vertical Mobile Games 2-Column Sub-Grid -->
+            <div class="mobile-sub-grid">
                 <!-- Mobile 2: Right Ball -->
                 <div class="mobile-card reveal">
-                    <div class="mobile-video-container">
-                        <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs?vq=hd1080&rel=0&enablejsapi=1" title="Right Ball Trailer" allowfullscreen loading="lazy"></iframe>
+                    <div class="title-with-icon" style="margin-bottom: 14px;">
+                        <div class="game-icon-badge">
+                            <img src="src/Right%20Ball/icon.png" alt="Right Ball Icon" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.35rem; margin-bottom: 2px;">Right Ball</h4>
+                            <div class="tags-list">
+                                <span class="tag-chip">Hypercasual</span>
+                                <span class="tag-chip">Yodo1 MAS SDK</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4>Right Ball</h4>
-                    <div class="tags-list" style="margin-bottom: 12px;">
-                        <span class="tag-chip">Hypercasual</span>
-                        <span class="tag-chip">Yodo1 MAS SDK</span>
+                    <div class="media-container-group">
+                        <div class="mobile-video-container" style="position: relative;">
+                            <iframe src="https://www.youtube.com/embed/SUQjzuoVSfs?vq=hd1080&rel=0&enablejsapi=1" title="Right Ball Trailer" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="thumbnails-row" style="margin-top: 10px;">
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 0, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 1, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(1).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 2, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(2).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 3, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(3).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/Right%20Ball/unnamed.jpg', 'src/Right%20Ball/unnamed%20(1).jpg', 'src/Right%20Ball/unnamed%20(2).jpg', 'src/Right%20Ball/unnamed%20(3).jpg', 'src/Right%20Ball/unnamed%20(4).jpg', 'src/Right%20Ball/unnamed%20(5).jpg', 'src/Right%20Ball/unnamed%20(6).jpg', 'src/Right%20Ball/unnamed%20(7).jpg', 'src/Right%20Ball/unnamed%20(8).jpg'], 4, 'Right Ball Screenshot')"><img src="src/Right%20Ball/unnamed%20(4).jpg" alt="Thumb" loading="lazy"></button>
+                        </div>
                     </div>
-                    <p>An addictive hypercasual title focused on retention and smooth physics mechanics, integrated with Yodo1 MAS SDK mediation.</p>
+                    <p style="margin-top: 14px;">An addictive hypercasual title focused on retention and smooth physics mechanics, integrated with Yodo1 MAS SDK mediation.</p>
                 </div>
 
                 <!-- Mobile 3: MyTeammates -->
                 <div class="mobile-card reveal">
-                    <div class="mobile-video-container">
-                        <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0?vq=hd1080&rel=0&enablejsapi=1" title="MyTeammates Trailer" allowfullscreen loading="lazy"></iframe>
+                    <div class="title-with-icon" style="margin-bottom: 14px;">
+                        <div class="game-icon-badge">
+                            <img src="src/My%20Teammates/icon.png" alt="MyTeammates Icon" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.35rem; margin-bottom: 2px;">MyTeammates</h4>
+                            <div class="tags-list">
+                                <span class="tag-chip">Hypercasual</span>
+                                <span class="tag-chip">Leaderboards</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4>MyTeammates</h4>
-                    <div class="tags-list" style="margin-bottom: 12px;">
-                        <span class="tag-chip">Hypercasual</span>
-                        <span class="tag-chip">Leaderboards</span>
+                    <div class="media-container-group">
+                        <div class="mobile-video-container" style="position: relative;">
+                            <iframe src="https://www.youtube.com/embed/Ca5WECMYmY0?vq=hd1080&rel=0&enablejsapi=1" title="MyTeammates Trailer" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                        <div class="thumbnails-row" style="margin-top: 10px;">
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 0, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed.jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 1, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(1).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 2, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(2).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 3, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(3).jpg" alt="Thumb" loading="lazy"></button>
+                            <button class="thumb-btn portrait" onclick="openLightbox(['src/My%20Teammates/unnamed.jpg', 'src/My%20Teammates/unnamed%20(1).jpg', 'src/My%20Teammates/unnamed%20(2).jpg', 'src/My%20Teammates/unnamed%20(3).jpg', 'src/My%20Teammates/unnamed%20(4).jpg', 'src/My%20Teammates/unnamed%20(5).jpg', 'src/My%20Teammates/unnamed%20(6).jpg', 'src/My%20Teammates/unnamed%20(7).jpg'], 4, 'MyTeammates Screenshot')"><img src="src/My%20Teammates/unnamed%20(4).jpg" alt="Thumb" loading="lazy"></button>
+                        </div>
                     </div>
-                    <p>A reflex-based mobile title featuring competitive elements and global scoreboards.</p>
+                    <p style="margin-top: 14px;">A reflex-based mobile title featuring competitive elements and global scoreboards.</p>
                 </div>
             </div>
         </section>
@@ -1431,43 +1826,117 @@
             </div>
 
             <div class="jam-grid">
-                <!-- Jam 1 -->
+                <!-- Jam 1: Albino And Curse -->
                 <div class="jam-card reveal">
-                    <div class="tags-list" style="margin-bottom: 12px;">
-                        <span class="tag-chip">Academic Project</span>
-                        <span class="tag-chip">Turn-Based RPG</span>
+                    <div class="title-with-icon">
+                        <div class="game-icon-badge">
+                            <img src="src/Albino%20And%20Curse/icon.png" alt="Albino And Curse Icon" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.35rem; margin-bottom: 2px;">Albino And Curse</h4>
+                            <div class="tags-list">
+                                <span class="tag-chip">Academic Project</span>
+                                <span class="tag-chip">Turn-Based RPG</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4>Albino And Curse</h4>
+                    <div class="jam-media-box" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 0, 'Albino And Curse Gameplay')">
+                        <img src="src/Albino%20And%20Curse/O9E45d.png" alt="Albino And Curse Preview" loading="lazy">
+                    </div>
+                    <div class="thumbnails-row" style="margin-bottom: 12px;">
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 0, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/O9E45d.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 1, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/ZF5zp8.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 2, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/k%2BPieh.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/Albino%20And%20Curse/O9E45d.png', 'src/Albino%20And%20Curse/ZF5zp8.png', 'src/Albino%20And%20Curse/k%2BPieh.png', 'src/Albino%20And%20Curse/lkHnfR.png', 'src/Albino%20And%20Curse/t6CqsU.png', 'src/Albino%20And%20Curse/vTTed3.png'], 3, 'Albino And Curse Gameplay')"><img src="src/Albino%20And%20Curse/lkHnfR.png" alt="Thumb" loading="lazy"></button>
+                    </div>
                     <p>Solo-programmed and designed for a university module (2-person team). Handled all programming, systems, and combat art while collaborating on general 2D sprites.</p>
-                    <a href="https://bruhfurki.itch.io/albino-and-curse" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem; transition: var(--transition-fast);">
+                    <a href="https://bruhfurki.itch.io/albino-and-curse" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem;">
                         <i class="fa-brands fa-itch-io"></i> Play on Itch.io <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
                     </a>
                 </div>
 
-                <!-- Jam 2 -->
+                <!-- Jam 2: The Amber Path -->
                 <div class="jam-card reveal">
-                    <div class="tags-list" style="margin-bottom: 12px;">
-                        <span class="tag-chip">Game Jam</span>
-                        <span class="tag-chip">Team Project</span>
+                    <div class="title-with-icon">
+                        <div class="game-icon-badge">
+                            <img src="src/The%20Amber%20Path/icon.png" alt="The Amber Path Icon" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.35rem; margin-bottom: 2px;">The Amber Path</h4>
+                            <div class="tags-list">
+                                <span class="tag-chip">Game Jam</span>
+                                <span class="tag-chip">Puzzle Narrative</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4>The Amber Path</h4>
+                    <div class="jam-media-box" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 0, 'The Amber Path Gameplay')">
+                        <img src="src/The%20Amber%20Path/1767101928367.jpg" alt="The Amber Path Preview" loading="lazy">
+                    </div>
+                    <div class="thumbnails-row" style="margin-bottom: 12px;">
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 0, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101928367.jpg" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 1, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101930044.jpg" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 2, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101931323.jpg" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Amber%20Path/1767101928367.jpg', 'src/The%20Amber%20Path/1767101930044.jpg', 'src/The%20Amber%20Path/1767101931323.jpg', 'src/The%20Amber%20Path/1767101931326.jpg', 'src/The%20Amber%20Path/1767101931447.jpg', 'src/The%20Amber%20Path/1767101933317.jpg'], 3, 'The Amber Path Gameplay')"><img src="src/The%20Amber%20Path/1767101931326.jpg" alt="Thumb" loading="lazy"></button>
+                    </div>
                     <p>A 2D narrative-puzzle jam game created under strict 48-hour constraints (2-person team). Spearheaded 100% of programming, puzzle logic, and interaction triggers.</p>
-                    <a href="https://bruhfurki.itch.io/the-amber-path" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem; transition: var(--transition-fast);">
+                    <a href="https://bruhfurki.itch.io/the-amber-path" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem;">
                         <i class="fa-brands fa-itch-io"></i> Play on Itch.io <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
                     </a>
                 </div>
 
-                <!-- Jam 3 -->
+                <!-- Jam 3: The Mindbreak -->
                 <div class="jam-card reveal">
-                    <div class="tags-list" style="margin-bottom: 12px;">
-                        <span class="tag-chip">Game Jam</span>
-                        <span class="tag-chip">Team Project</span>
+                    <div class="title-with-icon">
+                        <div class="game-icon-badge">
+                            <img src="src/The%20Mindbreak/icon.png" alt="The Mindbreak Icon" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.35rem; margin-bottom: 2px;">The Mindbreak</h4>
+                            <div class="tags-list">
+                                <span class="tag-chip">Game Jam</span>
+                                <span class="tag-chip">Team Lead</span>
+                            </div>
+                        </div>
                     </div>
-                    <h4>The Mindbreak</h4>
-                    <p>A prototype created during a high-stakes Game Jam. Showcases the ability to brainstorm, scope down features realistically, and deliver a playable core loop collaboratively.</p>
-                    <a href="https://fiuby.com/games/the-mindbreak" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem; transition: var(--transition-fast);">
+                    <div class="jam-media-box" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 0, 'The Mindbreak Gameplay')">
+                        <img src="src/The%20Mindbreak/9LcQxaZdnS-1766327054.png" alt="The Mindbreak Preview" loading="lazy">
+                    </div>
+                    <div class="thumbnails-row" style="margin-bottom: 12px;">
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 0, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/9LcQxaZdnS-1766327054.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 1, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 2, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/rWAE3sY7BK-1766327054.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Mindbreak/9LcQxaZdnS-1766327054.png', 'src/The%20Mindbreak/UdG2Vys9C6-1766327055%20(2).png', 'src/The%20Mindbreak/rWAE3sY7BK-1766327054.png', 'src/The%20Mindbreak/tOv0UdyX6r-1766327054.png', 'src/The%20Mindbreak/xTVnlpfwzU-1766327053.png'], 3, 'The Mindbreak Gameplay')"><img src="src/The%20Mindbreak/tOv0UdyX6r-1766327054.png" alt="Thumb" loading="lazy"></button>
+                    </div>
+                    <p>Led a 4-person team in a high-stakes Game Jam; spearheaded core game design, architectural logic, and gameplay programming while delegating audio and visual pipelines.</p>
+                    <a href="https://fiuby.com/games/the-mindbreak" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-weight: 600; color: var(--accent-green-bright); font-size: 0.9rem;">
                         <i class="fa-solid fa-globe"></i> Play on Fiuby <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
                     </a>
+                </div>
+
+                <!-- Jam 4: The Basement -->
+                <div class="jam-card reveal">
+                    <div class="title-with-icon">
+                        <div class="game-icon-badge">
+                            <img src="src/The%20Basement/icon.png" alt="The Basement Icon" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.35rem; margin-bottom: 2px;">The Basement</h4>
+                            <div class="tags-list">
+                                <span class="tag-chip">Solo Prototype</span>
+                                <span class="tag-chip">Atmospheric</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="jam-media-box" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 0, 'The Basement Gameplay')">
+                        <img src="src/The%20Basement/33NPjU.png" alt="The Basement Preview" loading="lazy">
+                    </div>
+                    <div class="thumbnails-row" style="margin-bottom: 12px;">
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 0, 'The Basement Gameplay')"><img src="src/The%20Basement/33NPjU.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 1, 'The Basement Gameplay')"><img src="src/The%20Basement/7U7lmw.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 2, 'The Basement Gameplay')"><img src="src/The%20Basement/SUSUx2.png" alt="Thumb" loading="lazy"></button>
+                        <button class="thumb-btn" onclick="openLightbox(['src/The%20Basement/33NPjU.png', 'src/The%20Basement/7U7lmw.png', 'src/The%20Basement/SUSUx2.png', 'src/The%20Basement/fOjSrX.png'], 3, 'The Basement Gameplay')"><img src="src/The%20Basement/fOjSrX.png" alt="Thumb" loading="lazy"></button>
+                    </div>
+                    <p>Created an early-stage solo jam prototype focusing on atmospheric tension, rapid modular level design, and fast state-machine programming under tight time constraints.</p>
                 </div>
             </div>
         </section>
@@ -1510,6 +1979,26 @@
             <p style="margin-top: 8px;">&copy; 2026 Furkan Süleyman Bozkurt. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+        <div class="lightbox-overlay" id="lightboxOverlay"></div>
+        <div class="lightbox-container">
+            <button class="lightbox-btn lightbox-close" id="lightboxClose" aria-label="Close Lightbox">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <button class="lightbox-btn lightbox-prev" id="lightboxPrev" aria-label="Previous Image">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="lightbox-img-frame">
+                <img src="" alt="Fullscreen Gameplay Preview" id="lightboxImg" loading="lazy" decoding="async">
+            </div>
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+            <button class="lightbox-btn lightbox-next" id="lightboxNext" aria-label="Next Image">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- UI TOAST & BACK TO TOP BUTTON -->
     <div class="toast" id="toast">
@@ -1750,6 +2239,115 @@
                         setTimeout(() => window.lenis.resize(), 120);
                     }
                 });
+            });
+
+            // 8. Universal Lightbox & Multi-Media Gallery Controller
+            const lightboxModal = document.getElementById('lightboxModal');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+            const lightboxOverlay = document.getElementById('lightboxOverlay');
+
+            let currentGalleryImages = [];
+            let currentImageIndex = 0;
+
+            window.openLightbox = function(images, startIndex, captionText) {
+                if (!images || images.length === 0) return;
+                currentGalleryImages = images;
+                currentImageIndex = startIndex || 0;
+                updateLightboxImage(captionText);
+                if (lightboxModal) {
+                    lightboxModal.classList.add('active');
+                    lightboxModal.setAttribute('aria-hidden', 'false');
+                }
+            };
+
+            function updateLightboxImage(captionText) {
+                if (!lightboxImg) return;
+                lightboxImg.src = currentGalleryImages[currentImageIndex];
+                if (captionText && lightboxCaption) {
+                    lightboxCaption.textContent = `${captionText} (${currentImageIndex + 1}/${currentGalleryImages.length})`;
+                    lightboxCaption.style.display = 'block';
+                } else if (lightboxCaption) {
+                    lightboxCaption.style.display = 'none';
+                }
+            }
+
+            if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+            if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+
+            function closeLightbox() {
+                if (lightboxModal) {
+                    lightboxModal.classList.remove('active');
+                    lightboxModal.setAttribute('aria-hidden', 'true');
+                }
+            }
+
+            if (lightboxPrev) {
+                lightboxPrev.addEventListener('click', () => {
+                    if (currentGalleryImages.length > 0) {
+                        currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+                        updateLightboxImage();
+                    }
+                });
+            }
+
+            if (lightboxNext) {
+                lightboxNext.addEventListener('click', () => {
+                    if (currentGalleryImages.length > 0) {
+                        currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+                        updateLightboxImage();
+                    }
+                });
+            }
+
+            window.addEventListener('keydown', (e) => {
+                if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
+                if (e.key === 'ArrowRight' && lightboxNext) lightboxNext.click();
+            });
+
+            // 9. Interactive Media Switcher for Steam & Mobile Featured Cards
+            document.querySelectorAll('.media-container-group').forEach(group => {
+                const displayBox = group.querySelector('.media-display-box');
+                if (!displayBox) return;
+
+                const iframe = displayBox.querySelector('iframe');
+                const screenshotImg = displayBox.querySelector('.active-screenshot');
+                const tabTrailer = group.querySelector('.tab-trailer');
+                const tabPhotos = group.querySelector('.tab-photos');
+                const thumbs = group.querySelectorAll('.thumb-btn');
+
+                thumbs.forEach((thumb) => {
+                    thumb.addEventListener('click', () => {
+                        const imgSrc = thumb.getAttribute('data-img');
+                        if (imgSrc) {
+                            thumbs.forEach(t => t.classList.remove('active'));
+                            thumb.classList.add('active');
+
+                            if (iframe) iframe.style.display = 'none';
+                            if (screenshotImg) {
+                                screenshotImg.src = imgSrc;
+                                screenshotImg.style.display = 'block';
+                            }
+                            if (tabTrailer) tabTrailer.classList.remove('active');
+                            if (tabPhotos) tabPhotos.classList.add('active');
+                        }
+                    });
+                });
+
+                if (tabTrailer && iframe) {
+                    tabTrailer.addEventListener('click', () => {
+                        if (tabPhotos) tabPhotos.classList.remove('active');
+                        tabTrailer.classList.add('active');
+                        thumbs.forEach(t => t.classList.remove('active'));
+                        iframe.style.display = 'block';
+                        if (screenshotImg) screenshotImg.style.display = 'none';
+                    });
+                }
             });
         });
     </script>
